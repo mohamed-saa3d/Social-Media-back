@@ -224,68 +224,14 @@ Accessibility improvements
 ------
 Frontend Architecture (Planned)
 src/
-|
-├── app/
-│   ├── providers/
-│   ├── router/
-│   ├── store/
-│   ├── layouts/
-│   └── config/
-|
-├── features/
-│   ├── auth/
-│   ├── posts/
-│   ├── comments/
-│   ├── users/
-│   ├── notifications/
-│   ├── media/
-│   ├── chat/
-│   ├── realtime/
-│   └── admin/
-|
-├── entities/
-│   ├── user/
-│   ├── post/
-│   ├── comment/
-│   ├── notification/
-│   ├── session/
-│   └── message/
-|
-├── shared/
-│   ├── api/
-│   ├── ui/
-│   ├── components/
-│   ├── hooks/
-│   ├── lib/
-│   ├── utils/
-│   ├── constants/
-│   ├── types/
-│   ├── schemas/
-│   └── assets/
-|
-├── widgets/
-│   ├── sidebar/
-│   ├── navbar/
-│   ├── feed/
-│   ├── profile-header/
-│   └── notifications-dropdown/
-|
-├── pages/
-│   ├── auth/
-│   ├── feed/
-│   ├── profile/
-│   ├── admin/
-│   └── chat/
-|
-├── processes/
-│   ├── auth-bootstrap/
-│   ├── realtime-connection/
-│   └── session-sync/
-|
-├── styles/
-│
-├── main.tsx
-└── vite-env.d.ts
+├── app/           # إعدادات التطبيق الأساسية
+├── features/      # الميزات والـ Business Logic
+├── entities/      # النماذج الأساسية (Entities)
+├── shared/        # الكود المشترك
+├── widgets/       # الـ Widgets المركبة
+├── pages/         # الصفحات الرئيسية
+├── processes/     # العمليات المعقدة
+└── styles/        # الملفات الستايل العامة
 --------
 Architecture Principles
 SOLID principles
