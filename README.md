@@ -223,6 +223,7 @@ PWA support
 Accessibility improvements
 ------
 Frontend Architecture (Planned)
+
 src/
 ├── app/           # إعدادات التطبيق الأساسية
 ├── features/      # الميزات والـ Business Logic
