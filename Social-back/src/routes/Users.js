@@ -12,7 +12,6 @@ import {
 } from '../../controllers/userController.js';
 import validateRequest from '../middlewares/validateRequest.js';
 import { registerValidation, loginValidation, updateUserValidation } from '../validations/user.validation.js';
-import User from '../models/User.js';
 import { requireAuth } from '../middlewares/auth.js';
 import { ownerOrAdmin } from '../middlewares/authorize.js';
 import { loginLimiter, registerLimiter } from '../middlewares/rateLimiter.js';
@@ -25,7 +24,7 @@ router.post('/logout', asyncHandler(logoutUser));
 router.get('/my-profile', requireAuth, asyncHandler(getMyProfile));
 router.get('/:id', asyncHandler(getUserById));
 router.post('/:id/follow', requireAuth, asyncHandler(followUser));
-router.put('/:id', requireAuth, ownerOrAdmin((req) => User.findById(req.params.id)), updateUserValidation, validateRequest, asyncHandler(updateUser));
-router.delete('/:id', requireAuth, ownerOrAdmin((req) => User.findById(req.params.id)), asyncHandler(deleteUser));
+router.put('/:id', requireAuth, ownerOrAdmin('User'), updateUserValidation, validateRequest, asyncHandler(updateUser));
+router.delete('/:id', requireAuth, ownerOrAdmin('User'), asyncHandler(deleteUser));
 
 export default router;

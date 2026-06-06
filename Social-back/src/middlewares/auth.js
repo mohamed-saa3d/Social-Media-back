@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import config from '../config.js';
-import Session from '../models/Session.js';
 import User from '../models/User.js';
+import { validateSessionById } from '../services/sessionService.js';
 
 const FIVE_MINUTES_MS = 5 * 60 * 1000;
 
@@ -17,15 +17,6 @@ const maybeUpdateLastActive = async (userId) => {
     },
     { $set: { lastActiveAt: new Date(), isActive: true } },
   );
-};
-
-const validateSessionById = async (sid) => {
-  if (!sid) return null;
-  const session = await Session.findById(sid);
-  if (!session) return null;
-  if (session.isRevoked) return null;
-  if (!session.expiresAt || session.expiresAt <= new Date()) return null;
-  return session;
 };
 
 const hydrateRequestUser = async (req, userId, sessionId) => {

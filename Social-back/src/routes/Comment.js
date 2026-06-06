@@ -1,6 +1,5 @@
 import express from 'express';
 import asyncHandler from '../middlewares/asyncHandler.js';
-import Comment from '../models/Comment.js';
 import validateRequest from '../middlewares/validateRequest.js';
 import { createComment, getCommentsByPost, getCommentById, updateComment, deleteComment } from '../../controllers/commentController.js';
 import { createCommentValidation, updateCommentValidation } from '../validations/comment.validation.js';
@@ -15,7 +14,7 @@ router.get('/:id', asyncHandler(getCommentById));
 router.put(
     '/:id',
     requireAuth,
-    ownerOrAdmin((req) => Comment.findById(req.params.id)),
+    ownerOrAdmin('Comment'),
     updateCommentValidation,
     validateRequest,
     asyncHandler(updateComment),
@@ -23,7 +22,7 @@ router.put(
 router.delete(
     '/:id',
     requireAuth,
-    ownerOrAdmin((req) => Comment.findById(req.params.id)),
+    ownerOrAdmin('Comment'),
     asyncHandler(deleteComment),
 );
 

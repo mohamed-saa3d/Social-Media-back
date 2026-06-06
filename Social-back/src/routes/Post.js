@@ -1,6 +1,5 @@
 import express from 'express';
 import asyncHandler from '../middlewares/asyncHandler.js';
-import Post from '../models/Post.js';
 import {
     createPost,
     getPosts,
@@ -23,7 +22,7 @@ router.post('/:id/like', requireAuth, asyncHandler(likePost));
 router.put(
     '/:id',
     requireAuth,
-    ownerOrAdmin((req) => Post.findById(req.params.id)),
+    ownerOrAdmin('Post'),
     updatePostValidation,
     validateRequest,
     asyncHandler(updatePost),
@@ -31,7 +30,7 @@ router.put(
 router.delete(
     '/:id',
     requireAuth,
-    ownerOrAdmin((req) => Post.findById(req.params.id)),
+    ownerOrAdmin('Post'),
     asyncHandler(deletePost),
 );
 

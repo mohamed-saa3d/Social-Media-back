@@ -280,3 +280,5 @@
 {"level":"error","message":"Startup: MongoDB connection failed for mongodb+srv://mohamedsaad2827822772_db_user:slWHI5gq0ae1CeVV@cluster0.xxxxx.mongodb.net/social-app: querySrv ENOTFOUND _mongodb._tcp.cluster0.xxxxx.mongodb.net","timestamp":"2026-04-23T22:12:50.939Z"}
 {"level":"info","message":"Connected to MongoDB: mongodb+srv://mohammedsaadv7_db_user:NVXrzR9gqYdnVj6e@cluster0.4gamfho.mongodb.net/?appName=Cluster0","timestamp":"2026-04-23T22:14:21.235Z"}
 {"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-04-23T22:14:21.242Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb+srv://mohammedsaadv7_db_user:NVXrzR9gqYdnVj6e@cluster0.4gamfho.mongodb.net/?appName=Cluster0","timestamp":"2026-06-06T00:42:33.812Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-06T00:42:33.819Z"}
