@@ -1,23 +1,17 @@
---------
---------
-fix:
-"
-🧭 الخطة الصح (مش اللي Copilot قالها… اللي لازم تتعمل فعلاً)
-🥇 Phase 1 — FIX SECURITY (إجباري قبل أي حاجة)
+FIX SECURITY:
 remove JWT fallback
 enforce env validation
 bind access token بـ session
 fix upload validation (magic bytes)
 hide error details
-
-⛔ بدون المرحلة دي → ممنوع deploy
-
-🥈 Phase 2 — Stability
+----
+Stability
 fix indexes
 clean models
 unify validation
 remove dead code
-🥉 Phase 3 — Production Quality
+----
+Production Quality
 add real tests:
 auth
 refresh
@@ -25,11 +19,8 @@ logout
 roles
 تحسين logging
 تحسين caching usage
-🏁 Phase 4 — GitHub Ready
-clean repo
-improve README
-add:
-setup steps
-env example
-API docs
-"
+---------
+all done 
+-----
+new tasks:
+...
