@@ -4,6 +4,8 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './src/docs/swagger.js';
 import usersRouter from './src/routes/Users.js';
 import authRouter from './src/routes/Auth.js';
 import postsRouter from './src/routes/Post.js';
@@ -28,6 +30,12 @@ app.use(cors({
 	origin: process.env.ALLOWED_ORIGINS?.split(',') ?? [],
 	credentials: true,
 }));
+
+app.use(
+	'/api-docs',
+	swaggerUi.serve,
+	swaggerUi.setup(swaggerSpec),
+);
 
 // Rate limiting
 app.use(rateLimiter);

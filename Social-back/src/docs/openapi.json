@@ -1,0 +1,5482 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Social Media API",
+    "version": "1.0.0",
+    "description": "Full MERN Social Media Backend API Documentation"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "System",
+      "description": "Health and system endpoints"
+    },
+    {
+      "name": "Auth",
+      "description": "Authentication and password management"
+    },
+    {
+      "name": "Users",
+      "description": "User profile and follow APIs"
+    },
+    {
+      "name": "Posts",
+      "description": "Post feed and reactions"
+    },
+    {
+      "name": "Comments",
+      "description": "Comment CRUD APIs"
+    },
+    {
+      "name": "Notifications",
+      "description": "Notification inbox APIs"
+    },
+    {
+      "name": "Sessions",
+      "description": "Session management APIs"
+    },
+    {
+      "name": "Media",
+      "description": "Media upload APIs"
+    },
+    {
+      "name": "Admin",
+      "description": "Administrative APIs"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "parameters": {
+      "PageParam": {
+        "name": "page",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "example": 1
+        },
+        "description": "Page number for paginated endpoints.",
+        "examples": {
+          "default": {
+            "summary": "Page number",
+            "value": 1
+          }
+        }
+      },
+      "LimitParam": {
+        "name": "limit",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50,
+          "example": 10
+        },
+        "description": "Page size for paginated endpoints.",
+        "examples": {
+          "default": {
+            "summary": "Page size",
+            "value": 10
+          }
+        }
+      },
+      "UserIdParam": {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "description": "User identifier.",
+        "examples": {
+          "default": {
+            "summary": "User id",
+            "value": "66c2d3a4e0b0c1a2b3c4d5e6"
+          }
+        }
+      },
+      "PostIdParam": {
+        "name": "postId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "description": "Post identifier.",
+        "examples": {
+          "default": {
+            "summary": "Post id",
+            "value": "66c2d3a4e0b0c1a2b3c4d5e9"
+          }
+        }
+      },
+      "CommentIdParam": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "description": "Comment identifier.",
+        "examples": {
+          "default": {
+            "summary": "Comment id",
+            "value": "66c2d3a4e0b0c1a2b3c4d5ea"
+          }
+        }
+      },
+      "IdParam": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "description": "Resource identifier.",
+        "examples": {
+          "default": {
+            "summary": "Resource id",
+            "value": "66c2d3a4e0b0c1a2b3c4d5e6"
+          }
+        }
+      }
+    },
+    "schemas": {
+      "ObjectId": {
+        "type": "string",
+        "pattern": "^[a-fA-F0-9]{24}$",
+        "example": "66c2d3a4e0b0c1a2b3c4d5e6"
+      },
+      "PublicAuthUser": {
+        "type": "object",
+        "required": [
+          "id",
+          "username",
+          "email"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "username": {
+            "type": "string",
+            "example": "jane_doe"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "jane@example.com"
+          }
+        }
+      },
+      "UserProfile": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true,
+            "example": "Jane Doe"
+          },
+          "username": {
+            "type": "string",
+            "example": "jane_doe"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "example": "jane@example.com"
+          },
+          "avatar": {
+            "type": "string",
+            "example": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+          },
+          "bio": {
+            "type": "string",
+            "nullable": true,
+            "example": "Frontend engineer and coffee enthusiast."
+          },
+          "location": {
+            "type": "string",
+            "nullable": true,
+            "example": "Cairo"
+          },
+          "followers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ObjectId"
+            }
+          },
+          "following": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ObjectId"
+            }
+          },
+          "isAdmin": {
+            "type": "boolean",
+            "example": false
+          },
+          "isActive": {
+            "type": "boolean",
+            "example": true
+          },
+          "lastActiveAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Post": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "userId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "image": {
+            "type": "string",
+            "nullable": true,
+            "example": "/uploads/f4e1c8c8-1717760000000.jpg"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true,
+            "example": "A new post from the feed."
+          },
+          "visibility": {
+            "type": "string",
+            "enum": [
+              "public",
+              "private",
+              "friends"
+            ],
+            "example": "public"
+          },
+          "likes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ObjectId"
+            }
+          },
+          "commentsCount": {
+            "type": "integer",
+            "example": 2
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CommentReply": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "text": {
+            "type": "string",
+            "example": "Thanks!"
+          }
+        }
+      },
+      "Comment": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "userId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "postId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "text": {
+            "type": "string",
+            "example": "Nice post!"
+          },
+          "replies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CommentReply"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Notification": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "like",
+              "follow",
+              "comment"
+            ],
+            "example": "like"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "recipient": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "post": {
+            "$ref": "#/components/schemas/ObjectId",
+            "nullable": true
+          },
+          "comment": {
+            "$ref": "#/components/schemas/ObjectId",
+            "nullable": true
+          },
+          "read": {
+            "type": "boolean",
+            "example": false
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "SessionSummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "deviceInfo": {
+            "type": "string",
+            "example": "Chrome on Windows"
+          },
+          "ipAddress": {
+            "type": "string",
+            "nullable": true,
+            "example": "127.0.0.1"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "MediaUpload": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": "string",
+            "example": "f4e1c8c8-1717760000000.jpg"
+          },
+          "mimetype": {
+            "type": "string",
+            "example": "image/jpeg"
+          },
+          "size": {
+            "type": "integer",
+            "example": 182736
+          },
+          "url": {
+            "type": "string",
+            "example": "/uploads/f4e1c8c8-1717760000000.jpg"
+          }
+        }
+      },
+      "AuthRegisterResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "token": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "user": {
+            "$ref": "#/components/schemas/PublicAuthUser"
+          }
+        }
+      },
+      "AuthLoginResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Login successful"
+          },
+          "token": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "user": {
+            "$ref": "#/components/schemas/PublicAuthUser"
+          }
+        }
+      },
+      "MessageResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Success"
+          }
+        }
+      },
+      "FollowResponse": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "$ref": "#/components/schemas/UserProfile"
+          },
+          "actor": {
+            "$ref": "#/components/schemas/UserProfile"
+          }
+        }
+      },
+      "AdminStatsResponse": {
+        "type": "object",
+        "properties": {
+          "users": {
+            "type": "integer",
+            "example": 120
+          },
+          "posts": {
+            "type": "integer",
+            "example": 340
+          }
+        }
+      },
+      "PaginatedPosts": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Post"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "example": 1
+          },
+          "totalPages": {
+            "type": "integer",
+            "example": 4
+          },
+          "totalCount": {
+            "type": "integer",
+            "example": 38
+          }
+        }
+      },
+      "PaginatedComments": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Comment"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "example": 1
+          },
+          "totalPages": {
+            "type": "integer",
+            "example": 3
+          },
+          "totalCount": {
+            "type": "integer",
+            "example": 24
+          }
+        }
+      },
+      "PaginatedNotifications": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Notification"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "example": 1
+          },
+          "totalPages": {
+            "type": "integer",
+            "example": 2
+          },
+          "totalCount": {
+            "type": "integer",
+            "example": 12
+          }
+        }
+      },
+      "ValidationIssue": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "field"
+          },
+          "msg": {
+            "type": "string",
+            "example": "Invalid value"
+          },
+          "path": {
+            "type": "string",
+            "example": "email"
+          },
+          "location": {
+            "type": "string",
+            "example": "body"
+          },
+          "value": {}
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Unauthorized"
+          },
+          "error": {
+            "type": "string",
+            "example": "Forbidden"
+          },
+          "success": {
+            "type": "boolean",
+            "example": false
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "$ref": "#/components/schemas/ValidationIssue"
+                }
+              ]
+            }
+          },
+          "stack": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ValidationErrorResponse": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationIssue"
+            }
+          }
+        }
+      }
+    },
+    "examples": {
+      "HealthExample": {
+        "summary": "Healthy server",
+        "value": {
+          "status": "ok",
+          "port": 5000,
+          "dbConnected": true
+        }
+      },
+      "RegisterUserRequest": {
+        "summary": "Register request",
+        "value": {
+          "username": "jane_doe",
+          "email": "jane@example.com",
+          "password": "StrongP@ssw0rd!"
+        }
+      },
+      "RegisterUserResponse": {
+        "summary": "Register response",
+        "value": {
+          "success": true,
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "user": {
+            "id": "66c2d3a4e0b0c1a2b3c4d5e6",
+            "username": "jane_doe",
+            "email": "jane@example.com"
+          }
+        }
+      },
+      "LoginUserRequest": {
+        "summary": "Login request",
+        "value": {
+          "email": "jane@example.com",
+          "password": "StrongP@ssw0rd!"
+        }
+      },
+      "LoginUserResponse": {
+        "summary": "Login response",
+        "value": {
+          "message": "Login successful",
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+          "user": {
+            "id": "66c2d3a4e0b0c1a2b3c4d5e6",
+            "username": "jane_doe",
+            "email": "jane@example.com"
+          }
+        }
+      },
+      "PasswordChangeRequest": {
+        "summary": "Password change request",
+        "value": {
+          "currentPassword": "OldP@ssw0rd!",
+          "newPassword": "NewP@ssw0rd!",
+          "confirmNewPassword": "NewP@ssw0rd!"
+        }
+      },
+      "PostCreateRequest": {
+        "summary": "Create post request",
+        "value": {
+          "text": "Hello from my feed.",
+          "image": "/uploads/example.jpg",
+          "visibility": "public"
+        }
+      },
+      "CommentCreateRequest": {
+        "summary": "Create comment request",
+        "value": {
+          "postId": "66c2d3a4e0b0c1a2b3c4d5e9",
+          "text": "Nice post!"
+        }
+      },
+      "MediaUploadRequest": {
+        "summary": "Media upload request",
+        "value": {
+          "file": "(binary file)"
+        }
+      }
+    }
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "System"
+        ],
+        "summary": "Check service health",
+        "description": "Returns the current server and database health status.\n\n**Example request**\n\n```bash\nhttp://localhost:5000/health\n```",
+        "responses": {
+          "200": {
+            "description": "Health check response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    },
+                    "port": {
+                      "type": "integer",
+                      "example": 5000
+                    },
+                    "dbConnected": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                },
+                "example": {
+                  "status": "ok",
+                  "port": 5000,
+                  "dbConnected": true
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "status": "ok",
+                      "port": 5000,
+                      "dbConnected": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "healthCheck",
+        "security": []
+      }
+    },
+    "/api/users/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Register a new user",
+        "description": "Creates a user account, starts a session, and returns an access token plus refresh cookie.\n\n**Example request**\n\n```bash\ncurl -X POST -H \"Content-Type: application/json\" http://localhost:5000/api/users/register -d '{\"username\":\"jane_doe\",\"email\":\"jane@example.com\",\"password\":\"StrongP@ssw0rd!\"}'\n```",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "username",
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "jane_doe"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "jane@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "StrongP@ssw0rd!"
+                  }
+                }
+              },
+              "example": {
+                "username": "jane_doe",
+                "email": "jane@example.com",
+                "password": "StrongP@ssw0rd!"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Request example",
+                  "value": {
+                    "username": "jane_doe",
+                    "email": "jane@example.com",
+                    "password": "StrongP@ssw0rd!"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User registered successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthRegisterResponse"
+                },
+                "example": {
+                  "success": true,
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                  "user": {
+                    "id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                    "username": "jane_doe",
+                    "email": "jane@example.com"
+                  }
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "success": true,
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                      "user": {
+                        "id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                        "username": "jane_doe",
+                        "email": "jane@example.com"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation or registration error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ValidationErrorResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                },
+                "examples": {
+                  "validation": {
+                    "summary": "Validation error",
+                    "value": {
+                      "errors": [
+                        {
+                          "type": "field",
+                          "msg": "Invalid value",
+                          "path": "email",
+                          "location": "body",
+                          "value": "bad-email"
+                        }
+                      ]
+                    }
+                  },
+                  "application": {
+                    "summary": "Application error",
+                    "value": {
+                      "error": "Invalid email or password"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "User already exists",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many registration attempts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "registerUser",
+        "security": []
+      }
+    },
+    "/api/users/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Log in a user",
+        "description": "Authenticates a user, starts a session, and returns an access token plus refresh cookie.\n\n**Example request**\n\n```bash\ncurl -X POST -H \"Content-Type: application/json\" http://localhost:5000/api/users/login -d '{\"email\":\"jane@example.com\",\"password\":\"StrongP@ssw0rd!\"}'\n```",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "jane@example.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "StrongP@ssw0rd!"
+                  }
+                }
+              },
+              "example": {
+                "email": "jane@example.com",
+                "password": "StrongP@ssw0rd!"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Request example",
+                  "value": {
+                    "email": "jane@example.com",
+                    "password": "StrongP@ssw0rd!"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthLoginResponse"
+                },
+                "example": {
+                  "message": "Login successful",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                  "user": {
+                    "id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                    "username": "jane_doe",
+                    "email": "jane@example.com"
+                  }
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "message": "Login successful",
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                      "user": {
+                        "id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                        "username": "jane_doe",
+                        "email": "jane@example.com"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation or credential error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ValidationErrorResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                },
+                "examples": {
+                  "validation": {
+                    "summary": "Validation error",
+                    "value": {
+                      "errors": [
+                        {
+                          "type": "field",
+                          "msg": "Invalid value",
+                          "path": "email",
+                          "location": "body",
+                          "value": "bad-email"
+                        }
+                      ]
+                    }
+                  },
+                  "application": {
+                    "summary": "Application error",
+                    "value": {
+                      "error": "Invalid email or password"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid credentials",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many login attempts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "loginUser",
+        "security": []
+      }
+    },
+    "/api/users/logout": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Log out the current user",
+        "description": "Revokes the active refresh token cookie and, when present, the bearer access token session.\n\n**Example request**\n\n```bash\ncurl -X POST http://localhost:5000/api/users/logout\n```",
+        "responses": {
+          "200": {
+            "description": "Logout successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "message": "Logged out successfully"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "message": "Logged out successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "logoutUser",
+        "security": [],
+        "requestBody": {
+          "required": false,
+          "description": "No request body is required for this operation.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {}
+              },
+              "example": {},
+              "examples": {
+                "default": {
+                  "summary": "Request example",
+                  "value": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/my-profile": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get current user profile",
+        "description": "Returns the authenticated user's profile document.\n\n**Example request**\n\n```bash\ncurl -H \"Authorization: Bearer <token>\" http://localhost:5000/api/users/my-profile\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current user profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                },
+                "example": {
+                  "_id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                  "name": "Jane Doe",
+                  "username": "jane_doe",
+                  "email": "jane@example.com",
+                  "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+                  "bio": "Frontend engineer and coffee enthusiast.",
+                  "location": "Cairo",
+                  "followers": [
+                    "66c2d3a4e0b0c1a2b3c4d5e7"
+                  ],
+                  "following": [
+                    "66c2d3a4e0b0c1a2b3c4d5e8"
+                  ],
+                  "isAdmin": false,
+                  "isActive": true,
+                  "lastActiveAt": "2026-06-11T00:00:00.000Z",
+                  "createdAt": "2026-06-11T00:00:00.000Z",
+                  "updatedAt": "2026-06-11T00:00:00.000Z"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "name": "Jane Doe",
+                      "username": "jane_doe",
+                      "email": "jane@example.com",
+                      "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+                      "bio": "Frontend engineer and coffee enthusiast.",
+                      "location": "Cairo",
+                      "followers": [
+                        "66c2d3a4e0b0c1a2b3c4d5e7"
+                      ],
+                      "following": [
+                        "66c2d3a4e0b0c1a2b3c4d5e8"
+                      ],
+                      "isAdmin": false,
+                      "isActive": true,
+                      "lastActiveAt": "2026-06-11T00:00:00.000Z",
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "getMyProfile"
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get a user by ID",
+        "description": "Returns a public profile document for the requested user.\n\n**Example request**\n\n```bash\ncurl http://localhost:5000/api/users/66c2d3a4e0b0c1a2b3c4d5e6\n```",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                },
+                "example": {
+                  "_id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                  "name": "Jane Doe",
+                  "username": "jane_doe",
+                  "email": "jane@example.com",
+                  "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+                  "bio": "Frontend engineer and coffee enthusiast.",
+                  "location": "Cairo",
+                  "followers": [
+                    "66c2d3a4e0b0c1a2b3c4d5e7"
+                  ],
+                  "following": [
+                    "66c2d3a4e0b0c1a2b3c4d5e8"
+                  ],
+                  "isAdmin": false,
+                  "isActive": true,
+                  "lastActiveAt": "2026-06-11T00:00:00.000Z",
+                  "createdAt": "2026-06-11T00:00:00.000Z",
+                  "updatedAt": "2026-06-11T00:00:00.000Z"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "name": "Jane Doe",
+                      "username": "jane_doe",
+                      "email": "jane@example.com",
+                      "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+                      "bio": "Frontend engineer and coffee enthusiast.",
+                      "location": "Cairo",
+                      "followers": [
+                        "66c2d3a4e0b0c1a2b3c4d5e7"
+                      ],
+                      "following": [
+                        "66c2d3a4e0b0c1a2b3c4d5e8"
+                      ],
+                      "isAdmin": false,
+                      "isActive": true,
+                      "lastActiveAt": "2026-06-11T00:00:00.000Z",
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "getUserById",
+        "security": []
+      },
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update a user profile",
+        "description": "Updates editable profile fields for the owner or an admin.\n\n**Example request**\n\n```bash\ncurl -X PUT -H \"Authorization: Bearer <token>\" -H \"Content-Type: application/json\" http://localhost:5000/api/users/66c2d3a4e0b0c1a2b3c4d5e6 -d '{\"name\":\"Jane Doe\",\"bio\":\"Building social apps.\",\"location\":\"Cairo\"}'\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Jane Doe"
+                  },
+                  "bio": {
+                    "type": "string",
+                    "example": "Building social apps."
+                  },
+                  "avatar": {
+                    "type": "string",
+                    "example": "https://cdn.example.com/avatar.jpg"
+                  },
+                  "location": {
+                    "type": "string",
+                    "example": "Cairo"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated user profile",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                },
+                "example": {
+                  "_id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                  "name": "Jane Doe",
+                  "username": "jane_doe",
+                  "email": "jane@example.com",
+                  "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+                  "bio": "Frontend engineer and coffee enthusiast.",
+                  "location": "Cairo",
+                  "followers": [
+                    "66c2d3a4e0b0c1a2b3c4d5e7"
+                  ],
+                  "following": [
+                    "66c2d3a4e0b0c1a2b3c4d5e8"
+                  ],
+                  "isAdmin": false,
+                  "isActive": true,
+                  "lastActiveAt": "2026-06-11T00:00:00.000Z",
+                  "createdAt": "2026-06-11T00:00:00.000Z",
+                  "updatedAt": "2026-06-11T00:00:00.000Z"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "name": "Jane Doe",
+                      "username": "jane_doe",
+                      "email": "jane@example.com",
+                      "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+                      "bio": "Frontend engineer and coffee enthusiast.",
+                      "location": "Cairo",
+                      "followers": [
+                        "66c2d3a4e0b0c1a2b3c4d5e7"
+                      ],
+                      "following": [
+                        "66c2d3a4e0b0c1a2b3c4d5e8"
+                      ],
+                      "isAdmin": false,
+                      "isActive": true,
+                      "lastActiveAt": "2026-06-11T00:00:00.000Z",
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation or restricted field error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ValidationErrorResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                },
+                "examples": {
+                  "validation": {
+                    "summary": "Validation error",
+                    "value": {
+                      "errors": [
+                        {
+                          "type": "field",
+                          "msg": "Invalid value",
+                          "path": "email",
+                          "location": "body",
+                          "value": "bad-email"
+                        }
+                      ]
+                    }
+                  },
+                  "application": {
+                    "summary": "Application error",
+                    "value": {
+                      "error": "Invalid email or password"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "updateUser"
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Delete a user account",
+        "description": "Deletes the user account and all related content for the owner or an admin.\n\n**Example request**\n\n```bash\ncurl -X DELETE -H \"Authorization: Bearer <token>\" http://localhost:5000/api/users/66c2d3a4e0b0c1a2b3c4d5e6\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID format or restricted action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "deleteUser"
+      }
+    },
+    "/api/users/{id}/follow": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Follow or unfollow a user",
+        "description": "Toggles following state between the authenticated user and the target user.\n\n**Example request**\n\n```bash\ncurl -X POST -H \"Authorization: Bearer <token>\" http://localhost:5000/api/users/66c2d3a4e0b0c1a2b3c4d5f0/follow\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Follow state updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FollowResponse"
+                },
+                "example": {
+                  "target": {
+                    "_id": "66c2d3a4e0b0c1a2b3c4d5f0",
+                    "username": "target_user",
+                    "email": "target@example.com",
+                    "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+                    "followers": [
+                      "66c2d3a4e0b0c1a2b3c4d5e6"
+                    ],
+                    "following": [],
+                    "isAdmin": false,
+                    "isActive": true,
+                    "createdAt": "2026-06-11T00:00:00.000Z",
+                    "updatedAt": "2026-06-11T00:00:00.000Z"
+                  },
+                  "actor": {
+                    "_id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                    "username": "jane_doe",
+                    "email": "jane@example.com",
+                    "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+                    "followers": [],
+                    "following": [
+                      "66c2d3a4e0b0c1a2b3c4d5f0"
+                    ],
+                    "isAdmin": false,
+                    "isActive": true,
+                    "createdAt": "2026-06-11T00:00:00.000Z",
+                    "updatedAt": "2026-06-11T00:00:00.000Z"
+                  }
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "target": {
+                        "_id": "66c2d3a4e0b0c1a2b3c4d5f0",
+                        "username": "target_user",
+                        "email": "target@example.com",
+                        "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+                        "followers": [
+                          "66c2d3a4e0b0c1a2b3c4d5e6"
+                        ],
+                        "following": [],
+                        "isAdmin": false,
+                        "isActive": true,
+                        "createdAt": "2026-06-11T00:00:00.000Z",
+                        "updatedAt": "2026-06-11T00:00:00.000Z"
+                      },
+                      "actor": {
+                        "_id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                        "username": "jane_doe",
+                        "email": "jane@example.com",
+                        "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
+                        "followers": [],
+                        "following": [
+                          "66c2d3a4e0b0c1a2b3c4d5f0"
+                        ],
+                        "isAdmin": false,
+                        "isActive": true,
+                        "createdAt": "2026-06-11T00:00:00.000Z",
+                        "updatedAt": "2026-06-11T00:00:00.000Z"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Cannot follow yourself or invalid ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "followUser",
+        "requestBody": {
+          "required": false,
+          "description": "No request body is required for this operation.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {}
+              },
+              "example": {},
+              "examples": {
+                "default": {
+                  "summary": "Request example",
+                  "value": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/change-password": {
+      "patch": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Change the authenticated user's password",
+        "description": "Validates the current password, updates to a new password, and revokes other sessions.\n\n**Example request**\n\n```bash\ncurl -X PATCH -H \"Authorization: Bearer <token>\" -H \"Content-Type: application/json\" http://localhost:5000/api/auth/change-password -d '{\"currentPassword\":\"OldP@ssw0rd!\",\"newPassword\":\"NewP@ssw0rd!\",\"confirmNewPassword\":\"NewP@ssw0rd!\"}'\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "currentPassword",
+                  "newPassword",
+                  "confirmNewPassword"
+                ],
+                "properties": {
+                  "currentPassword": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "OldP@ssw0rd!"
+                  },
+                  "newPassword": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "NewP@ssw0rd!"
+                  },
+                  "confirmNewPassword": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "NewP@ssw0rd!"
+                  }
+                }
+              },
+              "example": {
+                "currentPassword": "OldP@ssw0rd!",
+                "newPassword": "NewP@ssw0rd!",
+                "confirmNewPassword": "NewP@ssw0rd!"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Request example",
+                  "value": {
+                    "currentPassword": "OldP@ssw0rd!",
+                    "newPassword": "NewP@ssw0rd!",
+                    "confirmNewPassword": "NewP@ssw0rd!"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Password changed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "message": "Password changed successfully"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "message": "Password changed successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation or password rule error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ValidationErrorResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                },
+                "examples": {
+                  "validation": {
+                    "summary": "Validation error",
+                    "value": {
+                      "errors": [
+                        {
+                          "type": "field",
+                          "msg": "Invalid value",
+                          "path": "email",
+                          "location": "body",
+                          "value": "bad-email"
+                        }
+                      ]
+                    }
+                  },
+                  "application": {
+                    "summary": "Application error",
+                    "value": {
+                      "error": "Invalid email or password"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too many password change attempts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "changePassword"
+      }
+    },
+    "/api/posts": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "List posts",
+        "description": "Returns a paginated feed of posts sorted by newest first.\n\n**Example request**\n\n```bash\ncurl http://localhost:5000/api/posts?page=1&limit=10\n```",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PageParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated post feed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedPosts"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5e9",
+                      "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "image": "/uploads/post-image.jpg",
+                      "text": "A new post from the feed.",
+                      "visibility": "public",
+                      "likes": [
+                        "66c2d3a4e0b0c1a2b3c4d5e7"
+                      ],
+                      "commentsCount": 2,
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  ],
+                  "page": 1,
+                  "totalPages": 1,
+                  "totalCount": 1
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "data": [
+                        {
+                          "_id": "66c2d3a4e0b0c1a2b3c4d5e9",
+                          "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                          "image": "/uploads/post-image.jpg",
+                          "text": "A new post from the feed.",
+                          "visibility": "public",
+                          "likes": [
+                            "66c2d3a4e0b0c1a2b3c4d5e7"
+                          ],
+                          "commentsCount": 2,
+                          "createdAt": "2026-06-11T00:00:00.000Z",
+                          "updatedAt": "2026-06-11T00:00:00.000Z"
+                        }
+                      ],
+                      "page": 1,
+                      "totalPages": 1,
+                      "totalCount": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "listPosts",
+        "security": []
+      },
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Create a post",
+        "description": "Creates a new post for the authenticated user.\n\n**Example request**\n\n```bash\ncurl -X POST -H \"Authorization: Bearer <token>\" -H \"Content-Type: application/json\" http://localhost:5000/api/posts -d '{\"text\":\"Hello from my feed.\",\"image\":\"/uploads/example.jpg\"}'\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "example": "Hello from my feed."
+                  },
+                  "image": {
+                    "type": "string",
+                    "example": "/uploads/example.jpg"
+                  }
+                }
+              },
+              "example": {
+                "text": "Hello from my feed.",
+                "image": "/uploads/example.jpg",
+                "visibility": "public"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Request example",
+                  "value": {
+                    "text": "Hello from my feed.",
+                    "image": "/uploads/example.jpg",
+                    "visibility": "public"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Post created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                },
+                "example": {
+                  "_id": "66c2d3a4e0b0c1a2b3c4d5e9",
+                  "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                  "image": "/uploads/example.jpg",
+                  "text": "Hello from my feed.",
+                  "visibility": "public",
+                  "likes": [],
+                  "commentsCount": 0,
+                  "createdAt": "2026-06-11T00:00:00.000Z",
+                  "updatedAt": "2026-06-11T00:00:00.000Z"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5e9",
+                      "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "image": "/uploads/example.jpg",
+                      "text": "Hello from my feed.",
+                      "visibility": "public",
+                      "likes": [],
+                      "commentsCount": 0,
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ValidationErrorResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                },
+                "examples": {
+                  "validation": {
+                    "summary": "Validation error",
+                    "value": {
+                      "errors": [
+                        {
+                          "type": "field",
+                          "msg": "Invalid value",
+                          "path": "email",
+                          "location": "body",
+                          "value": "bad-email"
+                        }
+                      ]
+                    }
+                  },
+                  "application": {
+                    "summary": "Application error",
+                    "value": {
+                      "error": "Invalid email or password"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "createPost"
+      }
+    },
+    "/api/posts/{id}": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Get a post by ID",
+        "description": "Returns a single post document by its identifier.\n\n**Example request**\n\n```bash\ncurl http://localhost:5000/api/posts/66c2d3a4e0b0c1a2b3c4d5e9\n```",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Post document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                },
+                "example": {
+                  "_id": "66c2d3a4e0b0c1a2b3c4d5e9",
+                  "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                  "image": "/uploads/post-image.jpg",
+                  "text": "A new post from the feed.",
+                  "visibility": "public",
+                  "likes": [
+                    "66c2d3a4e0b0c1a2b3c4d5e7"
+                  ],
+                  "commentsCount": 2,
+                  "createdAt": "2026-06-11T00:00:00.000Z",
+                  "updatedAt": "2026-06-11T00:00:00.000Z"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5e9",
+                      "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "image": "/uploads/post-image.jpg",
+                      "text": "A new post from the feed.",
+                      "visibility": "public",
+                      "likes": [
+                        "66c2d3a4e0b0c1a2b3c4d5e7"
+                      ],
+                      "commentsCount": 2,
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Post not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "getPostById",
+        "security": []
+      },
+      "put": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Update a post",
+        "description": "Updates editable post fields for the owner or an admin.\n\n**Example request**\n\n```bash\ncurl -X PUT -H \"Authorization: Bearer <token>\" -H \"Content-Type: application/json\" http://localhost:5000/api/posts/66c2d3a4e0b0c1a2b3c4d5e9 -d '{\"content\":\"Updated post content.\",\"visibility\":\"friends\"}'\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "example": "Updated post content."
+                  },
+                  "image": {
+                    "type": "string",
+                    "example": "/uploads/updated.jpg"
+                  },
+                  "visibility": {
+                    "type": "string",
+                    "enum": [
+                      "public",
+                      "private",
+                      "friends"
+                    ],
+                    "example": "friends"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated post",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                },
+                "example": {
+                  "_id": "66c2d3a4e0b0c1a2b3c4d5e9",
+                  "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                  "image": "/uploads/updated.jpg",
+                  "text": "Updated post content.",
+                  "visibility": "friends",
+                  "likes": [],
+                  "commentsCount": 2,
+                  "createdAt": "2026-06-11T00:00:00.000Z",
+                  "updatedAt": "2026-06-11T00:00:00.000Z"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5e9",
+                      "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "image": "/uploads/updated.jpg",
+                      "text": "Updated post content.",
+                      "visibility": "friends",
+                      "likes": [],
+                      "commentsCount": 2,
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation or restricted field error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ValidationErrorResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                },
+                "examples": {
+                  "validation": {
+                    "summary": "Validation error",
+                    "value": {
+                      "errors": [
+                        {
+                          "type": "field",
+                          "msg": "Invalid value",
+                          "path": "email",
+                          "location": "body",
+                          "value": "bad-email"
+                        }
+                      ]
+                    }
+                  },
+                  "application": {
+                    "summary": "Application error",
+                    "value": {
+                      "error": "Invalid email or password"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Post not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "updatePost"
+      },
+      "delete": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Delete a post",
+        "description": "Deletes a post and its related comments/notifications for the owner or an admin.\n\n**Example request**\n\n```bash\ncurl -X DELETE -H \"Authorization: Bearer <token>\" http://localhost:5000/api/posts/66c2d3a4e0b0c1a2b3c4d5e9\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Post deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "message": "Post deleted successfully"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "message": "Post deleted successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID format or restricted action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Post not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "deletePost"
+      }
+    },
+    "/api/posts/{id}/like": {
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Like or unlike a post",
+        "description": "Toggles the like state for the authenticated user on the target post.\n\n**Example request**\n\n```bash\ncurl -X POST -H \"Authorization: Bearer <token>\" http://localhost:5000/api/posts/66c2d3a4e0b0c1a2b3c4d5e9/like\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Post updated after like toggle",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Post"
+                },
+                "example": {
+                  "_id": "66c2d3a4e0b0c1a2b3c4d5e9",
+                  "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                  "image": "/uploads/post-image.jpg",
+                  "text": "A new post from the feed.",
+                  "visibility": "public",
+                  "likes": [
+                    "66c2d3a4e0b0c1a2b3c4d5e6"
+                  ],
+                  "commentsCount": 2,
+                  "createdAt": "2026-06-11T00:00:00.000Z",
+                  "updatedAt": "2026-06-11T00:00:00.000Z"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5e9",
+                      "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "image": "/uploads/post-image.jpg",
+                      "text": "A new post from the feed.",
+                      "visibility": "public",
+                      "likes": [
+                        "66c2d3a4e0b0c1a2b3c4d5e6"
+                      ],
+                      "commentsCount": 2,
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Post not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "likePost",
+        "requestBody": {
+          "required": false,
+          "description": "No request body is required for this operation.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {}
+              },
+              "example": {},
+              "examples": {
+                "default": {
+                  "summary": "Request example",
+                  "value": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/comments": {
+      "post": {
+        "tags": [
+          "Comments"
+        ],
+        "summary": "Create a comment",
+        "description": "Creates a new comment on a post for the authenticated user.\n\n**Example request**\n\n```bash\ncurl -X POST -H \"Authorization: Bearer <token>\" -H \"Content-Type: application/json\" http://localhost:5000/api/comments -d '{\"postId\":\"66c2d3a4e0b0c1a2b3c4d5e9\",\"text\":\"Nice post!\"}'\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "postId",
+                  "text"
+                ],
+                "properties": {
+                  "postId": {
+                    "$ref": "#/components/schemas/ObjectId"
+                  },
+                  "text": {
+                    "type": "string",
+                    "example": "Nice post!"
+                  }
+                }
+              },
+              "example": {
+                "postId": "66c2d3a4e0b0c1a2b3c4d5e9",
+                "text": "Nice post!"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Request example",
+                  "value": {
+                    "postId": "66c2d3a4e0b0c1a2b3c4d5e9",
+                    "text": "Nice post!"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Comment created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Comment"
+                },
+                "example": {
+                  "_id": "66c2d3a4e0b0c1a2b3c4d5ea",
+                  "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                  "postId": "66c2d3a4e0b0c1a2b3c4d5e9",
+                  "text": "Nice post!",
+                  "replies": [],
+                  "createdAt": "2026-06-11T00:00:00.000Z",
+                  "updatedAt": "2026-06-11T00:00:00.000Z"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5ea",
+                      "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "postId": "66c2d3a4e0b0c1a2b3c4d5e9",
+                      "text": "Nice post!",
+                      "replies": [],
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation or ID error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ValidationErrorResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                },
+                "examples": {
+                  "validation": {
+                    "summary": "Validation error",
+                    "value": {
+                      "errors": [
+                        {
+                          "type": "field",
+                          "msg": "Invalid value",
+                          "path": "email",
+                          "location": "body",
+                          "value": "bad-email"
+                        }
+                      ]
+                    }
+                  },
+                  "application": {
+                    "summary": "Application error",
+                    "value": {
+                      "error": "Invalid email or password"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "createComment"
+      }
+    },
+    "/api/comments/post/{postId}": {
+      "get": {
+        "tags": [
+          "Comments"
+        ],
+        "summary": "List comments for a post",
+        "description": "Returns a paginated list of comments for a specific post.\n\n**Example request**\n\n```bash\ncurl http://localhost:5000/api/comments/post/66c2d3a4e0b0c1a2b3c4d5e9?page=1&limit=10\n```",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PostIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/PageParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated comments",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedComments"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5ea",
+                      "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "postId": "66c2d3a4e0b0c1a2b3c4d5e9",
+                      "text": "Nice post!",
+                      "replies": [],
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  ],
+                  "page": 1,
+                  "totalPages": 1,
+                  "totalCount": 1
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "data": [
+                        {
+                          "_id": "66c2d3a4e0b0c1a2b3c4d5ea",
+                          "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                          "postId": "66c2d3a4e0b0c1a2b3c4d5e9",
+                          "text": "Nice post!",
+                          "replies": [],
+                          "createdAt": "2026-06-11T00:00:00.000Z",
+                          "updatedAt": "2026-06-11T00:00:00.000Z"
+                        }
+                      ],
+                      "page": 1,
+                      "totalPages": 1,
+                      "totalCount": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid post ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "listComments",
+        "security": []
+      }
+    },
+    "/api/comments/{id}": {
+      "get": {
+        "tags": [
+          "Comments"
+        ],
+        "summary": "Get a comment by ID",
+        "description": "Returns a single comment document by its identifier.\n\n**Example request**\n\n```bash\ncurl http://localhost:5000/api/comments/66c2d3a4e0b0c1a2b3c4d5ea\n```",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CommentIdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Comment document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Comment"
+                },
+                "example": {
+                  "_id": "66c2d3a4e0b0c1a2b3c4d5ea",
+                  "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                  "postId": "66c2d3a4e0b0c1a2b3c4d5e9",
+                  "text": "Nice post!",
+                  "replies": [],
+                  "createdAt": "2026-06-11T00:00:00.000Z",
+                  "updatedAt": "2026-06-11T00:00:00.000Z"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5ea",
+                      "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "postId": "66c2d3a4e0b0c1a2b3c4d5e9",
+                      "text": "Nice post!",
+                      "replies": [],
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Comment not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "getCommentById",
+        "security": []
+      },
+      "put": {
+        "tags": [
+          "Comments"
+        ],
+        "summary": "Update a comment",
+        "description": "Updates a comment for the owner or an admin.\n\n**Example request**\n\n```bash\ncurl -X PUT -H \"Authorization: Bearer <token>\" -H \"Content-Type: application/json\" http://localhost:5000/api/comments/66c2d3a4e0b0c1a2b3c4d5ea -d '{\"text\":\"Updated comment text.\"}'\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CommentIdParam"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "text"
+                ],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "example": "Updated comment text."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated comment",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Comment"
+                },
+                "example": {
+                  "_id": "66c2d3a4e0b0c1a2b3c4d5ea",
+                  "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                  "postId": "66c2d3a4e0b0c1a2b3c4d5e9",
+                  "text": "Updated comment text.",
+                  "replies": [],
+                  "createdAt": "2026-06-11T00:00:00.000Z",
+                  "updatedAt": "2026-06-11T00:00:00.000Z"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5ea",
+                      "userId": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "postId": "66c2d3a4e0b0c1a2b3c4d5e9",
+                      "text": "Updated comment text.",
+                      "replies": [],
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation or restricted field error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ValidationErrorResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                },
+                "examples": {
+                  "validation": {
+                    "summary": "Validation error",
+                    "value": {
+                      "errors": [
+                        {
+                          "type": "field",
+                          "msg": "Invalid value",
+                          "path": "email",
+                          "location": "body",
+                          "value": "bad-email"
+                        }
+                      ]
+                    }
+                  },
+                  "application": {
+                    "summary": "Application error",
+                    "value": {
+                      "error": "Invalid email or password"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Comment not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "updateComment"
+      },
+      "delete": {
+        "tags": [
+          "Comments"
+        ],
+        "summary": "Delete a comment",
+        "description": "Deletes a comment for the owner or an admin.\n\n**Example request**\n\n```bash\ncurl -X DELETE -H \"Authorization: Bearer <token>\" http://localhost:5000/api/comments/66c2d3a4e0b0c1a2b3c4d5ea\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/CommentIdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Comment deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "message": "Comment deleted successfully"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "message": "Comment deleted successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Comment not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "deleteComment"
+      }
+    },
+    "/api/notifications/user/{userId}": {
+      "get": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "List notifications for the current user",
+        "description": "Returns a paginated notification inbox for the authenticated user only.\n\n**Example request**\n\n```bash\ncurl -H \"Authorization: Bearer <token>\" http://localhost:5000/api/notifications/user/66c2d3a4e0b0c1a2b3c4d5e6?page=1&limit=10\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UserIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/PageParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated notifications",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedNotifications"
+                },
+                "example": {
+                  "data": [
+                    {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5eb",
+                      "type": "like",
+                      "actor": "66c2d3a4e0b0c1a2b3c4d5e7",
+                      "recipient": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "post": "66c2d3a4e0b0c1a2b3c4d5e9",
+                      "comment": "66c2d3a4e0b0c1a2b3c4d5ea",
+                      "read": false,
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  ],
+                  "page": 1,
+                  "totalPages": 1,
+                  "totalCount": 1
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "data": [
+                        {
+                          "_id": "66c2d3a4e0b0c1a2b3c4d5eb",
+                          "type": "like",
+                          "actor": "66c2d3a4e0b0c1a2b3c4d5e7",
+                          "recipient": "66c2d3a4e0b0c1a2b3c4d5e6",
+                          "post": "66c2d3a4e0b0c1a2b3c4d5e9",
+                          "comment": "66c2d3a4e0b0c1a2b3c4d5ea",
+                          "read": false,
+                          "createdAt": "2026-06-11T00:00:00.000Z",
+                          "updatedAt": "2026-06-11T00:00:00.000Z"
+                        }
+                      ],
+                      "page": 1,
+                      "totalPages": 1,
+                      "totalCount": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "listNotifications"
+      }
+    },
+    "/api/notifications/{id}/read": {
+      "patch": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Mark a notification as read",
+        "description": "Marks a notification as read for the authenticated recipient.\n\n**Example request**\n\n```bash\ncurl -X PATCH -H \"Authorization: Bearer <token>\" http://localhost:5000/api/notifications/66c2d3a4e0b0c1a2b3c4d5eb/read\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated notification",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Notification"
+                },
+                "example": {
+                  "_id": "66c2d3a4e0b0c1a2b3c4d5eb",
+                  "type": "like",
+                  "actor": "66c2d3a4e0b0c1a2b3c4d5e7",
+                  "recipient": "66c2d3a4e0b0c1a2b3c4d5e6",
+                  "post": "66c2d3a4e0b0c1a2b3c4d5e9",
+                  "comment": "66c2d3a4e0b0c1a2b3c4d5ea",
+                  "read": true,
+                  "createdAt": "2026-06-11T00:00:00.000Z",
+                  "updatedAt": "2026-06-11T00:00:00.000Z"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "_id": "66c2d3a4e0b0c1a2b3c4d5eb",
+                      "type": "like",
+                      "actor": "66c2d3a4e0b0c1a2b3c4d5e7",
+                      "recipient": "66c2d3a4e0b0c1a2b3c4d5e6",
+                      "post": "66c2d3a4e0b0c1a2b3c4d5e9",
+                      "comment": "66c2d3a4e0b0c1a2b3c4d5ea",
+                      "read": true,
+                      "createdAt": "2026-06-11T00:00:00.000Z",
+                      "updatedAt": "2026-06-11T00:00:00.000Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Notification not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "markNotificationRead",
+        "requestBody": {
+          "required": false,
+          "description": "No request body is required for this operation.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {}
+              },
+              "example": {},
+              "examples": {
+                "default": {
+                  "summary": "Request example",
+                  "value": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/notifications/{id}": {
+      "delete": {
+        "tags": [
+          "Notifications"
+        ],
+        "summary": "Delete a notification",
+        "description": "Deletes a notification for the authenticated recipient.\n\n**Example request**\n\n```bash\ncurl -X DELETE -H \"Authorization: Bearer <token>\" http://localhost:5000/api/notifications/66c2d3a4e0b0c1a2b3c4d5eb\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Notification deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "message": "Deleted"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "message": "Deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Notification not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "deleteNotification"
+      }
+    },
+    "/api/sessions": {
+      "get": {
+        "tags": [
+          "Sessions"
+        ],
+        "summary": "List active sessions",
+        "description": "Returns the authenticated user's active sessions across devices.\n\n**Example request**\n\n```bash\ncurl -H \"Authorization: Bearer <token>\" http://localhost:5000/api/sessions\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Active sessions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SessionSummary"
+                  }
+                },
+                "example": [
+                  {
+                    "id": "66c2d3a4e0b0c1a2b3c4d5ec",
+                    "deviceInfo": "Chrome on Windows",
+                    "ipAddress": "127.0.0.1",
+                    "createdAt": "2026-06-11T00:00:00.000Z",
+                    "expiresAt": "2026-07-11T00:00:00.000Z"
+                  }
+                ],
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": [
+                      {
+                        "id": "66c2d3a4e0b0c1a2b3c4d5ec",
+                        "deviceInfo": "Chrome on Windows",
+                        "ipAddress": "127.0.0.1",
+                        "createdAt": "2026-06-11T00:00:00.000Z",
+                        "expiresAt": "2026-07-11T00:00:00.000Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "listMySessions"
+      },
+      "delete": {
+        "tags": [
+          "Sessions"
+        ],
+        "summary": "Revoke all other sessions",
+        "description": "Revokes all other sessions for the authenticated user using the current refresh token cookie.\n\n**Example request**\n\n```bash\ncurl -X DELETE -H \"Authorization: Bearer <token>\" http://localhost:5000/api/sessions\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Other sessions revoked",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": [
+                  {
+                    "id": "66c2d3a4e0b0c1a2b3c4d5ec",
+                    "deviceInfo": "Chrome on Windows",
+                    "ipAddress": "127.0.0.1",
+                    "createdAt": "2026-06-11T00:00:00.000Z",
+                    "expiresAt": "2026-07-11T00:00:00.000Z"
+                  }
+                ],
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": [
+                      {
+                        "id": "66c2d3a4e0b0c1a2b3c4d5ec",
+                        "deviceInfo": "Chrome on Windows",
+                        "ipAddress": "127.0.0.1",
+                        "createdAt": "2026-06-11T00:00:00.000Z",
+                        "expiresAt": "2026-07-11T00:00:00.000Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing refresh token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Session expired or unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "revokeAllSessions"
+      }
+    },
+    "/api/sessions/{id}": {
+      "delete": {
+        "tags": [
+          "Sessions"
+        ],
+        "summary": "Revoke a specific session",
+        "description": "Revokes a single session that belongs to the authenticated user.\n\n**Example request**\n\n```bash\ncurl -X DELETE -H \"Authorization: Bearer <token>\" http://localhost:5000/api/sessions/66c2d3a4e0b0c1a2b3c4d5ec\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Session revoked",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "message": "Session revoked successfully"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "message": "Session revoked successfully"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Session not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "revokeSession"
+      }
+    },
+    "/api/media": {
+      "post": {
+        "tags": [
+          "Media"
+        ],
+        "summary": "Upload a media file",
+        "description": "Uploads a single media file using multipart/form-data. The field name must be `file`.\n\n**Example request**\n\n```bash\ncurl -X POST -H \"Authorization: Bearer <token>\" -F \"file=@./example.jpg\" http://localhost:5000/api/media\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "file"
+                ],
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "JPEG, PNG, WEBP, or MP4 file"
+                  }
+                }
+              },
+              "example": {
+                "file": "(binary file)"
+              },
+              "examples": {
+                "default": {
+                  "summary": "Request example",
+                  "value": {
+                    "file": "(binary file)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "File uploaded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MediaUpload"
+                },
+                "example": {
+                  "filename": "f4e1c8c8-1717760000000.jpg",
+                  "mimetype": "image/jpeg",
+                  "size": 182736,
+                  "url": "/uploads/f4e1c8c8-1717760000000.jpg"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "filename": "f4e1c8c8-1717760000000.jpg",
+                      "mimetype": "image/jpeg",
+                      "size": 182736,
+                      "url": "/uploads/f4e1c8c8-1717760000000.jpg"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid or unsupported file",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/ValidationErrorResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ErrorResponse"
+                    }
+                  ]
+                },
+                "examples": {
+                  "validation": {
+                    "summary": "Validation error",
+                    "value": {
+                      "errors": [
+                        {
+                          "type": "field",
+                          "msg": "Invalid value",
+                          "path": "email",
+                          "location": "body",
+                          "value": "bad-email"
+                        }
+                      ]
+                    }
+                  },
+                  "application": {
+                    "summary": "Application error",
+                    "value": {
+                      "error": "Invalid email or password"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to save file",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "uploadMedia"
+      }
+    },
+    "/api/admin/users/{id}": {
+      "delete": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Delete a user as admin",
+        "description": "Deletes a user and all of their related records. Requires an admin token.\n\n**Example request**\n\n```bash\ncurl -X DELETE -H \"Authorization: Bearer <token>\" http://localhost:5000/api/admin/users/66c2d3a4e0b0c1a2b3c4d5e6\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User deleted by admin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "message": "User deleted"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "message": "User deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "deleteUserAdmin"
+      }
+    },
+    "/api/admin/users/{id}/demote": {
+      "patch": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Remove admin role from a user",
+        "description": "Demotes a user from admin to regular user. Requires an admin token.\n\n**Example request**\n\n```bash\ncurl -X PATCH -H \"Authorization: Bearer <token>\" http://localhost:5000/api/admin/users/66c2d3a4e0b0c1a2b3c4d5e6/demote\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Admin role removed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Admin role removed successfully"
+                    },
+                    "user": {
+                      "$ref": "#/components/schemas/UserProfile"
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Admin role removed successfully",
+                  "user": {
+                    "_id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                    "username": "jane_doe",
+                    "email": "jane@example.com",
+                    "isAdmin": false
+                  }
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "message": "Admin role removed successfully",
+                      "user": {
+                        "_id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                        "username": "jane_doe",
+                        "email": "jane@example.com",
+                        "isAdmin": false
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID format or business rule violation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "demoteAdmin",
+        "requestBody": {
+          "required": false,
+          "description": "No request body is required for this operation.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {}
+              },
+              "example": {},
+              "examples": {
+                "default": {
+                  "summary": "Request example",
+                  "value": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/admin/posts/{id}": {
+      "delete": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "Delete a post as admin",
+        "description": "Deletes a post and related comments/notifications. Requires an admin token.\n\n**Example request**\n\n```bash\ncurl -X DELETE -H \"Authorization: Bearer <token>\" http://localhost:5000/api/admin/posts/66c2d3a4e0b0c1a2b3c4d5e9\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Post deleted by admin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "message": "Post deleted"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "message": "Post deleted"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID format",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Post not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "deletePostAdmin"
+      }
+    },
+    "/api/admin/stats": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "summary": "View admin stats",
+        "description": "Returns platform counts for users and posts. Requires an admin token.\n\n**Example request**\n\n```bash\ncurl -H \"Authorization: Bearer <token>\" http://localhost:5000/api/admin/stats\n```",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Platform statistics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminStatsResponse"
+                },
+                "example": {
+                  "users": 120,
+                  "posts": 340
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "users": 120,
+                      "posts": 340
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "message": "Error"
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Error response example",
+                    "value": {
+                      "message": "Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "viewStats"
+      }
+    }
+  }
+}
