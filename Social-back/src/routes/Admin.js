@@ -1,6 +1,6 @@
 import express from 'express';
 import asyncHandler from '../middlewares/asyncHandler.js';
-import { deleteUserAdmin, deletePostAdmin, viewStats, demoteAdmin } from '../../controllers/adminController.js';
+import { deleteUserAdmin, deletePostAdmin, viewStats, demoteAdmin } from '../controllers/adminController.js';
 import { requireAuth } from '../middlewares/auth.js';
 import { adminOnly } from '../middlewares/authorize.js';
 

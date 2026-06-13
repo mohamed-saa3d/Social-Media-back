@@ -1,7 +1,7 @@
 import express from 'express';
 import asyncHandler from '../middlewares/asyncHandler.js';
 import validateRequest from '../middlewares/validateRequest.js';
-import { createComment, getCommentsByPost, getCommentById, updateComment, deleteComment } from '../../controllers/commentController.js';
+import { createComment, getCommentsByPost, getCommentById, updateComment, deleteComment } from '../controllers/commentController.js';
 import { createCommentValidation, updateCommentValidation } from '../validations/comment.validation.js';
 import { requireAuth } from '../middlewares/auth.js';
 import { ownerOrAdmin } from '../middlewares/authorize.js';

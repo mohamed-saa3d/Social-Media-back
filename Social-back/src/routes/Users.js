@@ -9,7 +9,7 @@ import {
   logoutUser,
   deleteUser,
   followUser,
-} from '../../controllers/userController.js';
+} from '../controllers/userController.js';
 import validateRequest from '../middlewares/validateRequest.js';
 import { registerValidation, loginValidation, updateUserValidation } from '../validations/user.validation.js';
 import { requireAuth } from '../middlewares/auth.js';

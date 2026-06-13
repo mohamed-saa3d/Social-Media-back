@@ -1,6 +1,6 @@
-import authService from '../src/services/authService.js';
-import userService from '../src/services/userService.js';
-import handleServiceError from '../src/utils/handleServiceError.js';
+import authService from '../services/authService.js';
+import userService from '../services/userService.js';
+import handleServiceError from '../utils/handleServiceError.js';
 
 const setRefreshCookie = (res, refreshToken, cookieOptions) => {
   res.cookie('refreshToken', refreshToken, cookieOptions);

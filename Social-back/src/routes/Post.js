@@ -7,9 +7,9 @@ import {
     updatePost,
     deletePost,
     likePost,
-} from '../../controllers/postController.js';
+} from '../controllers/postController.js';
 import validateRequest from '../middlewares/validateRequest.js';
-import { createPostValidation, updatePostValidation } from '../../post.validation.js';
+import { createPostValidation, updatePostValidation } from '../validations/post.validation.js';
 import { requireAuth } from '../middlewares/auth.js';
 import { ownerOrAdmin } from '../middlewares/authorize.js';
 

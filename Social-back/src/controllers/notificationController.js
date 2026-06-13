@@ -1,5 +1,5 @@
-import notificationService from '../src/services/notificationService.js';
-import handleServiceError from '../src/utils/handleServiceError.js';
+import notificationService from '../services/notificationService.js';
+import handleServiceError from '../utils/handleServiceError.js';
 
 export const getNotificationsForUser = async (req, res) => {
   try {

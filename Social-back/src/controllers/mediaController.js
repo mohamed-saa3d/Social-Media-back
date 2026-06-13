@@ -1,5 +1,5 @@
-import mediaService from '../src/services/mediaService.js';
-import handleServiceError from '../src/utils/handleServiceError.js';
+import mediaService from '../services/mediaService.js';
+import handleServiceError from '../utils/handleServiceError.js';
 
 export const uploadMedia = async (req, res) => {
   try {

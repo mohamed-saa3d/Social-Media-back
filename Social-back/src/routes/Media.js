@@ -1,7 +1,7 @@
 import express from 'express';
 import multer from 'multer';
 import asyncHandler from '../middlewares/asyncHandler.js';
-import { uploadMedia } from '../../controllers/mediaController.js';
+import { uploadMedia } from '../controllers/mediaController.js';
 import { requireAuth } from '../middlewares/auth.js';
 
 // Use memory storage so we can validate magic-bytes before persisting to disk

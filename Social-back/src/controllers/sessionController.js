@@ -1,5 +1,5 @@
-import sessionService from '../src/services/sessionService.js';
-import handleServiceError from '../src/utils/handleServiceError.js';
+import sessionService from '../services/sessionService.js';
+import handleServiceError from '../utils/handleServiceError.js';
 
 export const getMySessions = async (req, res) => {
   try {

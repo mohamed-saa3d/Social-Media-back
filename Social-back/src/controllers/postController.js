@@ -1,5 +1,5 @@
-import postService from '../src/services/postService.js';
-import handleServiceError from '../src/utils/handleServiceError.js';
+import postService from '../services/postService.js';
+import handleServiceError from '../utils/handleServiceError.js';
 
 export const createPost = async (req, res) => {
   try {

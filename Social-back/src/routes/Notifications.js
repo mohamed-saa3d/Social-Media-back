@@ -1,6 +1,6 @@
 import express from 'express';
 import asyncHandler from '../middlewares/asyncHandler.js';
-import { getNotificationsForUser, markNotificationRead, deleteNotification } from '../../controllers/notificationController.js';
+import { getNotificationsForUser, markNotificationRead, deleteNotification } from '../controllers/notificationController.js';
 import { requireAuth } from '../middlewares/auth.js';
 
 const router = express.Router();

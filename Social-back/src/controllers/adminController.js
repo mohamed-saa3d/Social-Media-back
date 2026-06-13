@@ -1,5 +1,5 @@
-import adminService from '../src/services/adminService.js';
-import handleServiceError from '../src/utils/handleServiceError.js';
+import adminService from '../services/adminService.js';
+import handleServiceError from '../utils/handleServiceError.js';
 
 export const getAllUsersAdmin = async (req, res) => {
   try {

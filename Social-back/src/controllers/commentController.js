@@ -1,5 +1,5 @@
-import commentService from '../src/services/commentService.js';
-import handleServiceError from '../src/utils/handleServiceError.js';
+import commentService from '../services/commentService.js';
+import handleServiceError from '../utils/handleServiceError.js';
 
 export const createComment = async (req, res) => {
   try {

@@ -1,5 +1,5 @@
-import authService from '../src/services/authService.js';
-import handleServiceError from '../src/utils/handleServiceError.js';
+import authService from '../services/authService.js';
+import handleServiceError from '../utils/handleServiceError.js';
 
 export const changePassword = async (req, res) => {
   try {

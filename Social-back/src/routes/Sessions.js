@@ -1,7 +1,7 @@
 import express from 'express';
 import asyncHandler from '../middlewares/asyncHandler.js';
 import { requireAuth } from '../middlewares/auth.js';
-import { getMySessions, revokeSession, revokeAllSessions } from '../../controllers/sessionController.js';
+import { getMySessions, revokeSession, revokeAllSessions } from '../controllers/sessionController.js';
 
 const router = express.Router();
 
