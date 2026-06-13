@@ -13,7 +13,7 @@ import commentsRouter from './src/routes/Comment.js';
 import notificationsRouter from './src/routes/Notifications.js';
 import adminRouter from './src/routes/Admin.js';
 import mediaRouter from './src/routes/Media.js';
-import sessionsRouter from './src/routes/Sessions.js';
+import sessionsRouter from './src/routes/session.routes.js';
 import connectDB, { isDbConnected } from './src/db.js';
 import errorHandler from './src/middlewares/errorHandler.js';
 import rateLimiter from './src/middlewares/rateLimiter.js';

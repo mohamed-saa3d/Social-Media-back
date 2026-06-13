@@ -304,3 +304,14 @@
 {"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-13T07:02:40.747Z"}
 {"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-13T07:02:40.831Z"}
 {"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-13T07:02:40.836Z"}
+{"level":"error","message":"Startup: MongoDB connection failed for mongodb://127.0.0.1:27017/social-app: connect ECONNREFUSED 127.0.0.1:27017","timestamp":"2026-06-13T08:42:20.868Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-13T08:44:07.402Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-13T08:44:07.410Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-13T08:44:23.208Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-13T08:44:23.225Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-13T08:45:45.216Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-13T08:45:45.248Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-13T08:45:58.762Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-13T08:45:58.779Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-13T08:46:49.790Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-13T08:46:49.818Z"}

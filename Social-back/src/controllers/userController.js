@@ -1,4 +1,4 @@
-import authService from '../services/authService.js';
+import authService from '../services/auth/auth.service.js';
 import userService from '../services/userService.js';
 import handleServiceError from '../utils/handleServiceError.js';
 
@@ -83,6 +83,10 @@ export const logoutUser = async (req, res) => {
     await authService.logoutUser({
       refreshToken: req.cookies?.refreshToken,
       authorizationHeader: req.headers?.authorization,
+      requestMeta: {
+        deviceInfo: req.headers['user-agent'] || 'Unknown',
+        ipAddress: req.ip,
+      },
     });
 
     res.clearCookie('refreshToken', {
