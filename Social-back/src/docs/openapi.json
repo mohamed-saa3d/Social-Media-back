@@ -47,6 +47,11 @@
       "name": "Admin",
       "description": "Administrative APIs"
     }
+    ,
+    {
+      "name": "Reports",
+      "description": "Content reporting APIs"
+    }
   ],
   "components": {
     "securitySchemes": {
@@ -480,6 +485,93 @@
           },
           "actor": {
             "$ref": "#/components/schemas/UserProfile"
+          }
+        }
+      },
+      "PaginatedUsers": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserProfile"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "example": 1
+          },
+          "totalPages": {
+            "type": "integer",
+            "example": 4
+          },
+          "totalCount": {
+            "type": "integer",
+            "example": 38
+          }
+        }
+      },
+      "Report": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "reporterId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "targetId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "targetType": {
+            "type": "string",
+            "example": "post"
+          },
+          "reason": {
+            "type": "string",
+            "example": "spam"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "example": "pending"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "OtpGenerateResponse": {
+        "type": "object",
+        "properties": {
+          "otp": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "code": {
+            "type": "string"
+          },
+          "expiresAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "OtpVerifyResponse": {
+        "type": "object",
+        "properties": {
+          "verified": {
+            "type": "boolean"
+          },
+          "otp": {
+            "$ref": "#/components/schemas/ObjectId"
           }
         }
       },
@@ -1853,13 +1945,12 @@
         "operationId": "deleteUser"
       }
     },
-    "/api/users/{id}/follow": {
+    "/api/follows/{userId}": {
       "post": {
         "tags": [
           "Users"
         ],
-        "summary": "Follow or unfollow a user",
-        "description": "Toggles following state between the authenticated user and the target user.\n\n**Example request**\n\n```bash\ncurl -X POST -H \"Authorization: Bearer <token>\" http://localhost:5000/api/users/66c2d3a4e0b0c1a2b3c4d5f0/follow\n```",
+        "summary": "Follow a user",
         "security": [
           {
             "BearerAuth": []
@@ -1867,102 +1958,36 @@
         ],
         "parameters": [
           {
-            "$ref": "#/components/parameters/IdParam"
+            "$ref": "#/components/parameters/UserIdParam"
           }
         ],
         "responses": {
-          "200": {
-            "description": "Follow state updated",
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FollowResponse"
-                },
-                "example": {
-                  "target": {
-                    "_id": "66c2d3a4e0b0c1a2b3c4d5f0",
-                    "username": "target_user",
-                    "email": "target@example.com",
-                    "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
-                    "followers": [
-                      "66c2d3a4e0b0c1a2b3c4d5e6"
-                    ],
-                    "following": [],
-                    "isAdmin": false,
-                    "isActive": true,
-                    "createdAt": "2026-06-11T00:00:00.000Z",
-                    "updatedAt": "2026-06-11T00:00:00.000Z"
-                  },
-                  "actor": {
-                    "_id": "66c2d3a4e0b0c1a2b3c4d5e6",
-                    "username": "jane_doe",
-                    "email": "jane@example.com",
-                    "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
-                    "followers": [],
-                    "following": [
-                      "66c2d3a4e0b0c1a2b3c4d5f0"
-                    ],
-                    "isAdmin": false,
-                    "isActive": true,
-                    "createdAt": "2026-06-11T00:00:00.000Z",
-                    "updatedAt": "2026-06-11T00:00:00.000Z"
-                  }
-                },
-                "examples": {
-                  "default": {
-                    "summary": "Success response example",
-                    "value": {
-                      "target": {
-                        "_id": "66c2d3a4e0b0c1a2b3c4d5f0",
-                        "username": "target_user",
-                        "email": "target@example.com",
-                        "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
-                        "followers": [
-                          "66c2d3a4e0b0c1a2b3c4d5e6"
-                        ],
-                        "following": [],
-                        "isAdmin": false,
-                        "isActive": true,
-                        "createdAt": "2026-06-11T00:00:00.000Z",
-                        "updatedAt": "2026-06-11T00:00:00.000Z"
-                      },
-                      "actor": {
-                        "_id": "66c2d3a4e0b0c1a2b3c4d5e6",
-                        "username": "jane_doe",
-                        "email": "jane@example.com",
-                        "avatar": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y",
-                        "followers": [],
-                        "following": [
-                          "66c2d3a4e0b0c1a2b3c4d5f0"
-                        ],
-                        "isAdmin": false,
-                        "isActive": true,
-                        "createdAt": "2026-06-11T00:00:00.000Z",
-                        "updatedAt": "2026-06-11T00:00:00.000Z"
-                      }
-                    }
-                  }
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Already following",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FollowResponse"
                 }
               }
             }
           },
           "400": {
-            "description": "Cannot follow yourself or invalid ID format",
+            "description": "Bad request",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "example": {
-                  "message": "Error"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "Error response example",
-                    "value": {
-                      "message": "Error"
-                    }
-                  }
                 }
               }
             }
@@ -1973,80 +1998,462 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "example": {
-                  "message": "Error"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "Error response example",
-                    "value": {
-                      "message": "Error"
-                    }
-                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Unfollow a user",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UserIdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Unfollowed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/follows/followers/{userId}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "List followers for a user",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UserIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/PageParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedUsers"
                 }
               }
             }
           },
           "404": {
-            "description": "User not found",
+            "description": "Not found",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorResponse"
-                },
-                "example": {
-                  "message": "Error"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "Error response example",
-                    "value": {
-                      "message": "Error"
-                    }
-                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/follows/following/{userId}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "List users followed by a user",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UserIdParam"
+          },
+          {
+            "$ref": "#/components/parameters/PageParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedUsers"
                 }
               }
             }
           },
-          "500": {
-            "description": "Internal server error",
+          "404": {
+            "description": "Not found",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/saved-posts/{postId}": {
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Save a post",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PostIdParam"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Saved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Already saved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Unsave a post",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PostIdParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Unsaved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/saved-posts": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "Get saved posts for authenticated user",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/PageParam"
+          },
+          {
+            "$ref": "#/components/parameters/LimitParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedPosts"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reports": {
+      "post": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Create a report",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "targetId": {
+                    "$ref": "#/components/schemas/ObjectId"
+                  },
+                  "targetType": {
+                    "type": "string",
+                    "example": "post"
+                  },
+                  "reason": {
+                    "type": "string",
+                    "example": "spam"
+                  },
+                  "description": {
+                    "type": "string",
+                    "nullable": true
+                  }
                 },
-                "example": {
-                  "message": "Error"
-                },
-                "examples": {
-                  "default": {
-                    "summary": "Error response example",
-                    "value": {
-                      "message": "Error"
-                    }
+                "required": [
+                  "targetId",
+                  "targetType",
+                  "reason"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Report"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Duplicate report",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Report"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "List reports (admin)",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Report"
                   }
                 }
               }
             }
           }
-        },
-        "operationId": "followUser",
+        }
+      }
+    },
+    "/api/reports/{id}/status": {
+      "patch": {
+        "tags": [
+          "Reports"
+        ],
+        "summary": "Update report status (admin)",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/IdParam"
+          }
+        ],
         "requestBody": {
-          "required": false,
-          "description": "No request body is required for this operation.",
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "additionalProperties": false,
-                "properties": {}
-              },
-              "example": {},
-              "examples": {
-                "default": {
-                  "summary": "Request example",
-                  "value": {}
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "example": "reviewed"
+                  }
+                },
+                "required": [
+                  "status"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Report"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/otp/send": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Generate and send OTP",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "ttlMs": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "type"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OTP created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OtpGenerateResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/otp/verify": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Verify OTP",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "code": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "code"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Verified",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OtpVerifyResponse"
                 }
               }
             }

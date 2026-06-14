@@ -8,7 +8,6 @@ import {
   updateUser,
   logoutUser,
   deleteUser,
-  followUser,
 } from '../controllers/userController.js';
 import validateRequest from '../middlewares/validateRequest.js';
 import { registerValidation, loginValidation, updateUserValidation } from '../validations/user.validation.js';
@@ -23,7 +22,6 @@ router.post('/login', loginLimiter, loginValidation, validateRequest, asyncHandl
 router.post('/logout', asyncHandler(logoutUser));
 router.get('/my-profile', requireAuth, asyncHandler(getMyProfile));
 router.get('/:id', asyncHandler(getUserById));
-router.post('/:id/follow', requireAuth, asyncHandler(followUser));
 router.put('/:id', requireAuth, ownerOrAdmin('User'), updateUserValidation, validateRequest, asyncHandler(updateUser));
 router.delete('/:id', requireAuth, ownerOrAdmin('User'), asyncHandler(deleteUser));
 

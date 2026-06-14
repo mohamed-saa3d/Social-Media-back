@@ -5,7 +5,7 @@ import { sendOtp, verifyOtp } from '../controllers/otpController.js';
 
 const router = express.Router();
 
-router.post('/otp/send', requireAuth, asyncHandler(sendOtp));
-router.post('/otp/verify', requireAuth, asyncHandler(verifyOtp));
+router.post('/send', requireAuth, asyncHandler(sendOtp));
+router.post('/verify', requireAuth, asyncHandler(verifyOtp));
 
 export default router;

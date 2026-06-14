@@ -10,8 +10,8 @@ import {
 
 const router = express.Router();
 
-router.post('/report', requireAuth, asyncHandler(createReport));
-router.get('/reports', requireAuth, adminOnly, asyncHandler(listReports));
-router.patch('/report/:id/status', requireAuth, adminOnly, asyncHandler(updateReportStatus));
+router.post('/', requireAuth, asyncHandler(createReport));
+router.get('/', requireAuth, adminOnly, asyncHandler(listReports));
+router.patch('/:id/status', requireAuth, adminOnly, asyncHandler(updateReportStatus));
 
 export default router;

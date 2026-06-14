@@ -14,6 +14,10 @@ import notificationsRouter from './src/routes/Notifications.js';
 import adminRouter from './src/routes/Admin.js';
 import mediaRouter from './src/routes/Media.js';
 import sessionsRouter from './src/routes/session.routes.js';
+import followRouter from './src/routes/Follow.js';
+import savedPostRouter from './src/routes/SavedPost.js';
+import reportRouter from './src/routes/Report.js';
+import otpRouter from './src/routes/OTP.js';
 import connectDB, { isDbConnected } from './src/db.js';
 import errorHandler from './src/middlewares/errorHandler.js';
 import rateLimiter from './src/middlewares/rateLimiter.js';
@@ -52,6 +56,10 @@ app.use('/api/notifications', notificationsRouter);
 app.use('/api/admin', adminRouter);
 app.use('/api/media', mediaRouter);
 app.use('/api/sessions', sessionsRouter);
+app.use('/api/follows', followRouter);
+app.use('/api/saved-posts', savedPostRouter);
+app.use('/api/reports', reportRouter);
+app.use('/api/otp', otpRouter);
 
 // Serve uploaded files
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads'), {

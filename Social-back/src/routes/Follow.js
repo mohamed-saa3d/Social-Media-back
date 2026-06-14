@@ -10,8 +10,8 @@ import {
 
 const router = express.Router();
 
-router.post('/follow/:userId', requireAuth, asyncHandler(followUser));
-router.delete('/unfollow/:userId', requireAuth, asyncHandler(unfollowUser));
+router.post('/:userId', requireAuth, asyncHandler(followUser));
+router.delete('/:userId', requireAuth, asyncHandler(unfollowUser));
 router.get('/followers/:userId', asyncHandler(getFollowers));
 router.get('/following/:userId', asyncHandler(getFollowing));
 

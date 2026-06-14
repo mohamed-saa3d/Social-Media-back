@@ -4,6 +4,5 @@ import { dirname, join } from 'node:path';
 
 const currentDir = dirname(fileURLToPath(import.meta.url));
 const openApiPath = join(currentDir, 'openapi.json');
-const openApiDocument = JSON.parse(readFileSync(openApiPath, 'utf8'));
 
-export default openApiDocument;
+export default JSON.parse(readFileSync(openApiPath, 'utf8'));

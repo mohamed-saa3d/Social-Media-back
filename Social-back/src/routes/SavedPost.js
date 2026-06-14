@@ -9,8 +9,8 @@ import {
 
 const router = express.Router();
 
-router.post('/saved/:postId', requireAuth, asyncHandler(savePost));
-router.delete('/saved/:postId', requireAuth, asyncHandler(unsavePost));
-router.get('/saved', requireAuth, asyncHandler(getSavedPosts));
+router.post('/:postId', requireAuth, asyncHandler(savePost));
+router.delete('/:postId', requireAuth, asyncHandler(unsavePost));
+router.get('/', requireAuth, asyncHandler(getSavedPosts));
 
 export default router;
