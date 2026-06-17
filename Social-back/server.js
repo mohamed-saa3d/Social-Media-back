@@ -6,7 +6,7 @@ import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import swaggerUi from 'swagger-ui-express';
 import swaggerSpec from './src/docs/swagger.js';
-import usersRouter from './src/routes/Users.js';
+import usersRouter from './src/routes/users.js';
 import authRouter from './src/routes/Auth.js';
 import postsRouter from './src/routes/Post.js';
 import commentsRouter from './src/routes/Comment.js';

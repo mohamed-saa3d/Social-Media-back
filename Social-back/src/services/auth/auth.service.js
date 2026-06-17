@@ -1,9 +1,11 @@
-import User from '../../models/User.js';
 import { AppError } from '../../utils/appError.js';
+import User from '../../models/User.js';
 import tokenService from './token.service.js';
 import passwordService from './password.service.js';
 import blacklistService from './blacklist.service.js';
 import sessionAuthService from './session-auth.service.js';
+import registerService from './register.service.js';
+import loginService from './login.service.js';
 
 const buildPublicUser = (user) => ({
   id: user._id,
@@ -38,62 +40,27 @@ const issueAuthPayload = async (user, requestMeta = {}) => {
   };
 };
 
-export const registerUser = async ({ username, email, password, requestMeta = {} }) => {
-  if (!username || !email || !password) {
-    throw new AppError(400, { success: false, message: 'Missing fields' });
-  }
+export const registerUser = async (args) => {
+  // Keep registration responsibilities in registerService (creates user, sends verification email)
+  const result = await registerService.registerUser(args);
 
-  if (!passwordService.isStrongPassword(password)) {
-    throw new AppError(400, {
-      success: false,
-      message: 'Password must include uppercase, lowercase, number, and special character',
-    });
-  }
+  // For backwards compatibility with the auth controller, issue tokens and session
+  const user = await User.findById(result.user.id);
+  if (!user) return result;
 
-  const existing = await User.findOne({ email });
-  if (existing) {
-    throw new AppError(409, { success: false, message: 'User already exists' });
-  }
-
-  const hashedPassword = await passwordService.hashPassword(password);
-  const user = await User.create({ username, email, password: hashedPassword });
-  const authPayload = await issueAuthPayload(user, requestMeta);
+  const authPayload = await issueAuthPayload(user, args.requestMeta);
 
   return {
+    ...result,
     user: authPayload.user,
     accessToken: authPayload.accessToken,
     token: authPayload.accessToken,
     refreshToken: authPayload.refreshToken,
     cookieOptions: authPayload.cookieOptions,
-    success: true,
   };
 };
 
-export const loginUser = async ({ email, password, requestMeta = {} }) => {
-  if (!email || !password) {
-    throw new AppError(400, { message: 'Missing email or password' });
-  }
-
-  const user = await User.findOne({ email }).select('+password');
-  if (!user) {
-    throw new AppError(400, { message: 'Invalid email or password' });
-  }
-
-  const isValid = await passwordService.comparePassword(password, user.password);
-  if (!isValid) {
-    throw new AppError(401, { message: 'Invalid email or password' });
-  }
-
-  const authPayload = await issueAuthPayload(user, requestMeta);
-  return {
-    user: authPayload.user,
-    accessToken: authPayload.accessToken,
-    token: authPayload.accessToken,
-    refreshToken: authPayload.refreshToken,
-    cookieOptions: authPayload.cookieOptions,
-    message: 'Login successful',
-  };
-};
+export const loginUser = async (args) => loginService.loginUser(args);
 
 export const refreshTokens = async ({ refreshToken, requestMeta = {} }) => {
   if (!refreshToken) {

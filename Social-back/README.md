@@ -43,3 +43,29 @@ Authentication:
 - Restrict `ALLOWED_ORIGINS` to trusted client URLs
 - Ensure file system permissions for `uploads/` and `logs/`
 - Use HTTPS and a reverse proxy in production
+----------
+## Auth Flow
+
+Register
+ ↓
+Create User
+ ↓
+emailVerified = false
+ ↓
+Generate Email Verification OTP
+ ↓
+Send Email
+ ↓
+User enters OTP
+ ↓
+Verify OTP
+ ↓
+emailVerified = true
+ ↓
+Issue Access Token
+ ↓
+Issue Refresh Token
+ ↓
+Create Session
+ ↓
+Auto Login

@@ -33,6 +33,13 @@ const getLatestOtp = async ({ userId, type }) => (
 
 export const generateOTP = async ({ userId, type, ttlMs = DEFAULT_OTP_TTL_MS }) => {
   const normalizedType = normalizeType(type);
+
+  if (normalizedType === 'email_verify') {
+    await OTP.updateMany(
+      { userId, type: normalizedType, usedAt: null, expiresAt: { $gt: new Date() } },
+      { $set: { usedAt: new Date() } },
+    );
+  }
   const code = generateNumericCode();
   const expiresAt = getExpiryFromNow(ttlMs);
   const codeHash = await hashOtpCode(code);

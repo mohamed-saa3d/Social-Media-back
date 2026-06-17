@@ -342,3 +342,426 @@
 {"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-14T12:38:59.881Z"}
 {"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-14T12:50:15.928Z"}
 {"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-14T12:50:15.935Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-14T13:00:31.056Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-14T13:00:31.066Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-14T13:09:26.127Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-14T13:09:26.136Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-14T13:17:52.065Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-14T13:17:52.071Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-14T13:19:37.053Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-14T13:19:37.060Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T18:31:18.680Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T18:31:18.701Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T20:26:41.143Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T20:26:41.434Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:07:12.244Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:07:12.250Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:07:24.687Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:07:24.695Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:07:27.009Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:07:27.014Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:32:58.744Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:32:58.793Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:33:20.446Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:33:20.496Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:33:39.707Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:33:39.746Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:37:51.706Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:37:51.832Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:38:16.063Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:38:16.117Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:44:17.204Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:44:17.284Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:44:52.181Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:44:52.231Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:50:34.321Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:50:34.410Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:50:43.333Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:50:43.374Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:53:56.473Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:53:56.525Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:54:08.176Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:54:08.205Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:54:15.479Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:54:15.500Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:54:25.195Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:54:25.218Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-15T22:58:35.029Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-15T22:58:35.046Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:10:29.855Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:10:29.889Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:10:35.910Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:10:35.929Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:12:59.827Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:12:59.845Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:13:11.041Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:13:11.052Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:13:38.267Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:13:38.379Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:18:13.055Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:18:13.067Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:20:47.333Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:20:47.350Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:24:58.434Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:24:58.489Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:31:28.353Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:31:28.362Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:31:30.808Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:31:30.815Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:32:07.355Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:32:07.378Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:32:08.806Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:32:08.811Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:41:25.284Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:41:25.293Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:41:52.399Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:41:52.414Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:43:35.209Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:43:35.216Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:43:40.739Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:43:40.747Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:43:51.851Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:43:51.861Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:46:26.598Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:46:26.603Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:49:55.510Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:49:55.520Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:52:20.870Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:52:20.875Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:52:54.727Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:52:54.736Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T00:56:01.939Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T00:56:01.952Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T01:39:33.539Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T01:39:33.555Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T11:01:12.088Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T11:01:12.096Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T11:39:54.504Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T11:39:54.591Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T11:40:06.003Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T11:40:06.018Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T11:54:07.378Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T11:54:07.385Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T11:54:10.891Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T11:54:10.901Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T11:55:44.973Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T11:55:45.018Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T14:33:57.662Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T14:33:57.676Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T14:34:30.008Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T14:34:30.020Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T14:34:35.031Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T14:34:35.042Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T14:34:48.356Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T14:34:48.362Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T14:34:56.138Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T14:34:56.145Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T14:35:06.926Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T14:35:06.933Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T14:35:13.417Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T14:35:13.424Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T14:43:52.776Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T14:43:52.783Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T14:46:16.526Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T14:46:16.533Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T14:46:20.953Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T14:46:20.972Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T14:48:32.970Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T14:48:32.982Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T15:32:08.824Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T15:32:08.836Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T15:34:40.828Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T15:34:40.834Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T15:40:25.750Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T15:40:25.757Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T15:40:56.475Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T15:40:56.486Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T15:41:55.731Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T15:41:55.748Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T15:42:09.219Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T15:42:09.228Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T15:42:13.141Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T15:42:13.150Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T15:44:08.346Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T15:44:08.370Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T15:52:48.942Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T15:52:48.948Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T15:55:13.319Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T15:55:13.360Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T15:55:51.758Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T15:55:51.891Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T15:57:07.609Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T15:57:07.806Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T15:57:16.223Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T15:57:16.241Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T18:27:22.882Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T18:27:22.889Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T18:30:55.284Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T18:30:55.290Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T18:40:02.295Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T18:40:02.302Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T18:45:54.855Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T18:45:54.861Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T18:52:38.884Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T18:52:38.890Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T18:52:41.176Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T18:52:41.183Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T18:53:11.925Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T18:53:11.931Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T18:53:14.961Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T18:53:14.968Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T18:53:25.561Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T18:53:25.568Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T18:54:36.916Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T18:54:36.922Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T18:54:42.268Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T18:54:42.284Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T19:02:45.390Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T19:02:45.397Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T19:13:44.008Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T19:13:44.014Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T21:36:30.508Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T21:36:30.519Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T21:40:54.325Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T21:40:54.333Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T21:41:26.948Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T21:41:26.954Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T21:41:28.958Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T21:41:28.966Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T21:41:32.678Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T21:41:32.684Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T21:50:19.843Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T21:50:19.850Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T22:00:26.244Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T22:00:26.256Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T22:00:30.035Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T22:00:30.042Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T22:01:08.899Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T22:01:08.909Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T22:01:34.318Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T22:01:34.324Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T22:01:38.438Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T22:01:38.444Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T22:06:58.397Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T22:06:58.405Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T22:07:11.508Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T22:07:11.514Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T22:12:29.366Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T22:12:29.373Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T22:12:46.832Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T22:12:46.838Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T22:28:04.985Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T22:28:04.991Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T22:33:40.781Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T22:33:40.787Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T22:33:45.359Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T22:33:45.366Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-16T22:34:37.133Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-16T22:34:37.154Z"}
+{"level":"error","message":"{\"message\":\"SMTP connection failed. Check antivirus, firewall, TLS settings, or SMTP configuration.\",\"stack\":\"Error: SMTP connection failed. Check antivirus, firewall, TLS settings, or SMTP configuration.\\n    at Object.sendVerificationEmail (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/services/mail.service.js:57:13)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\\n    at async Object.registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/services/auth/auth.service.js:71:1)\\n    at async registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/controllers/userController.js:11:20)\",\"path\":\"/api/users/register\",\"method\":\"POST\",\"body\":\"[REDACTED]\"}","timestamp":"2026-06-17T11:54:41.741Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T12:03:14.125Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T12:03:14.132Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T12:04:34.750Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T12:04:34.762Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T12:08:15.793Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T12:08:15.805Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T12:17:19.549Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T12:17:19.556Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T12:17:24.550Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T12:17:24.555Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T12:17:28.131Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T12:17:28.143Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T12:17:31.669Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T12:17:31.675Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T12:17:35.669Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T12:17:35.675Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T13:36:31.037Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T13:36:31.044Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T13:39:53.652Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T13:39:53.660Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T13:47:56.855Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T13:47:56.861Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T13:48:01.668Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T13:48:01.675Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T18:52:01.747Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T18:52:01.754Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T18:54:18.826Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T18:54:18.832Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T18:57:41.298Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T18:57:41.306Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T19:11:31.581Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T19:11:31.586Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T19:38:00.149Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T19:38:00.154Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a32f7a6ef45d9709e762850\",\"email\":\"m***9@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T19:38:14.983Z\"}","timestamp":"2026-06-17T19:38:14.983Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a32f7a6ef45d9709e762850\",\"otpId\":\"6a32f7a7ef45d9709e762854\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T19:48:14.991Z\",\"timestamp\":\"2026-06-17T19:38:15.096Z\"}","timestamp":"2026-06-17T19:38:15.097Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a32f7a6ef45d9709e762850\",\"email\":\"m***9@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a32f7a7ef45d9709e762854\",\"timestamp\":\"2026-06-17T19:38:15.097Z\"}","timestamp":"2026-06-17T19:38:15.097Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a32f7a6ef45d9709e762850\",\"email\":\"m***9@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a32f7a7ef45d9709e762854\",\"messageId\":\"<dacb1135-4a1b-77f5-1bf3-ea3b31439b8b@gmail.com>\",\"timestamp\":\"2026-06-17T19:38:17.429Z\"}","timestamp":"2026-06-17T19:38:17.429Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T19:40:17.280Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T19:40:17.288Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a32f82489c18dc941e1d011\",\"email\":\"m***9@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T19:40:20.797Z\"}","timestamp":"2026-06-17T19:40:20.797Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a32f82489c18dc941e1d011\",\"otpId\":\"6a32f82489c18dc941e1d015\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T19:50:20.803Z\",\"timestamp\":\"2026-06-17T19:40:20.885Z\"}","timestamp":"2026-06-17T19:40:20.885Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a32f82489c18dc941e1d011\",\"email\":\"m***9@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a32f82489c18dc941e1d015\",\"timestamp\":\"2026-06-17T19:40:20.886Z\"}","timestamp":"2026-06-17T19:40:20.886Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a32f82489c18dc941e1d011\",\"email\":\"m***9@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a32f82489c18dc941e1d015\",\"messageId\":\"<1e61a216-1a4f-cc21-70bf-ab2366c50865@gmail.com>\",\"timestamp\":\"2026-06-17T19:40:23.115Z\"}","timestamp":"2026-06-17T19:40:23.115Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a32f83189c18dc941e1d01c\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T19:40:33.836Z\"}","timestamp":"2026-06-17T19:40:33.836Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a32f83189c18dc941e1d01c\",\"otpId\":\"6a32f83189c18dc941e1d020\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T19:50:33.840Z\",\"timestamp\":\"2026-06-17T19:40:33.938Z\"}","timestamp":"2026-06-17T19:40:33.938Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a32f83189c18dc941e1d01c\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a32f83189c18dc941e1d020\",\"timestamp\":\"2026-06-17T19:40:33.938Z\"}","timestamp":"2026-06-17T19:40:33.938Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a32f83189c18dc941e1d01c\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a32f83189c18dc941e1d020\",\"messageId\":\"<4bd7c263-5ef6-7cd7-c137-21a79c620395@gmail.com>\",\"timestamp\":\"2026-06-17T19:40:35.965Z\"}","timestamp":"2026-06-17T19:40:35.965Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a32f83e89c18dc941e1d027\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T19:40:46.268Z\"}","timestamp":"2026-06-17T19:40:46.268Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a32f83e89c18dc941e1d027\",\"otpId\":\"6a32f83e89c18dc941e1d02b\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T19:50:46.274Z\",\"timestamp\":\"2026-06-17T19:40:46.355Z\"}","timestamp":"2026-06-17T19:40:46.355Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a32f83e89c18dc941e1d027\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a32f83e89c18dc941e1d02b\",\"timestamp\":\"2026-06-17T19:40:46.356Z\"}","timestamp":"2026-06-17T19:40:46.356Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a32f83e89c18dc941e1d027\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a32f83e89c18dc941e1d02b\",\"messageId\":\"<b6ca57f9-b50b-3074-e0b7-38870f2fe8c5@gmail.com>\",\"timestamp\":\"2026-06-17T19:40:48.424Z\"}","timestamp":"2026-06-17T19:40:48.424Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a32f87a89c18dc941e1d032\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T19:41:46.415Z\"}","timestamp":"2026-06-17T19:41:46.416Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a32f87a89c18dc941e1d032\",\"otpId\":\"6a32f87a89c18dc941e1d036\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T19:51:46.418Z\",\"timestamp\":\"2026-06-17T19:41:46.501Z\"}","timestamp":"2026-06-17T19:41:46.501Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a32f87a89c18dc941e1d032\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a32f87a89c18dc941e1d036\",\"timestamp\":\"2026-06-17T19:41:46.501Z\"}","timestamp":"2026-06-17T19:41:46.501Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a32f87a89c18dc941e1d032\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a32f87a89c18dc941e1d036\",\"messageId\":\"<44b0598f-3190-2a76-4266-a75e602db1a4@gmail.com>\",\"timestamp\":\"2026-06-17T19:41:48.677Z\"}","timestamp":"2026-06-17T19:41:48.677Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:20:59.616Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:20:59.628Z"}
+{"level":"error","message":"{\"message\":\"next is not a function\",\"stack\":\"TypeError: next is not a function\\n    at model.<anonymous> (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/models/User.js:70:3)\\n    at Kareem.execPre (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\kareem\\\\index.js:63:39)\\n    at async model.$__save (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:369:5)\\n    at async model.save (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:609:5)\\n    at async E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:2714:9\\n    at async Promise.all (index 0)\\n    at async model.create (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:2699:11)\\n    at async Object.registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/services/auth/register.service.js:25:16)\\n    at async Object.registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/services/auth/auth.service.js:45:18)\\n    at async registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/controllers/userController.js:11:20)\",\"path\":\"/api/users/register\",\"method\":\"POST\",\"body\":\"[REDACTED]\"}","timestamp":"2026-06-17T20:21:55.663Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:22:25.885Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:22:25.895Z"}
+{"level":"error","message":"{\"message\":\"next is not a function\",\"stack\":\"TypeError: next is not a function\\n    at model.<anonymous> (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/models/User.js:70:3)\\n    at Kareem.execPre (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\kareem\\\\index.js:63:39)\\n    at async model.$__save (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:369:5)\\n    at async model.save (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:609:5)\\n    at async E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:2714:9\\n    at async Promise.all (index 0)\\n    at async model.create (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:2699:11)\\n    at async Object.registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/services/auth/register.service.js:25:16)\\n    at async Object.registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/services/auth/auth.service.js:45:18)\\n    at async registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/controllers/userController.js:11:20)\",\"path\":\"/api/users/register\",\"method\":\"POST\",\"body\":\"[REDACTED]\"}","timestamp":"2026-06-17T20:22:52.306Z"}
+{"level":"error","message":"{\"message\":\"next is not a function\",\"stack\":\"TypeError: next is not a function\\n    at model.<anonymous> (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/models/User.js:70:3)\\n    at Kareem.execPre (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\kareem\\\\index.js:63:39)\\n    at async model.$__save (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:369:5)\\n    at async model.save (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:609:5)\\n    at async E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:2714:9\\n    at async Promise.all (index 0)\\n    at async model.create (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:2699:11)\\n    at async Object.registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/services/auth/register.service.js:25:16)\\n    at async Object.registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/services/auth/auth.service.js:45:18)\\n    at async registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/controllers/userController.js:11:20)\",\"path\":\"/api/users/register\",\"method\":\"POST\",\"body\":\"[REDACTED]\"}","timestamp":"2026-06-17T20:23:07.234Z"}
+{"level":"error","message":"{\"message\":\"next is not a function\",\"stack\":\"TypeError: next is not a function\\n    at model.<anonymous> (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/models/User.js:70:3)\\n    at Kareem.execPre (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\kareem\\\\index.js:63:39)\\n    at async model.$__save (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:369:5)\\n    at async model.save (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:609:5)\\n    at async E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:2714:9\\n    at async Promise.all (index 0)\\n    at async model.create (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\mongoose\\\\lib\\\\model.js:2699:11)\\n    at async Object.registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/services/auth/register.service.js:25:16)\\n    at async Object.registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/services/auth/auth.service.js:45:18)\\n    at async registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/controllers/userController.js:11:20)\",\"path\":\"/api/users/register\",\"method\":\"POST\",\"body\":\"[REDACTED]\"}","timestamp":"2026-06-17T20:24:44.703Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:26:53.251Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:26:53.257Z"}
+{"level":"error","message":"{\"message\":\"logger is not defined\",\"stack\":\"ReferenceError: logger is not defined\\n    at Object.registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/services/auth/register.service.js:30:3)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\\n    at async Object.registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/services/auth/auth.service.js:45:18)\\n    at async registerUser (file:///E:/Full_stack/MERN%20Stack%20Social%20Media%20App/Social-back/src/controllers/userController.js:11:20)\",\"path\":\"/api/users/register\",\"method\":\"POST\",\"body\":\"[REDACTED]\"}","timestamp":"2026-06-17T20:27:15.001Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:27:34.867Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:27:34.873Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:27:48.684Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:27:48.690Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:27:50.631Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:27:50.638Z"}
+{"level":"error","message":"{\"message\":\"Expected ':' after property name in JSON at position 61 (line 3 column 32)\",\"stack\":\"SyntaxError: Expected ':' after property name in JSON at position 61 (line 3 column 32)\\n    at JSON.parse (<anonymous>)\\n    at parse (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\body-parser\\\\lib\\\\types\\\\json.js:72:19)\\n    at E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\body-parser\\\\lib\\\\read.js:162:18\\n    at AsyncResource.runInAsyncScope (node:async_hooks:227:14)\\n    at invokeCallback (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\raw-body\\\\index.js:238:16)\\n    at done (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\raw-body\\\\index.js:227:7)\\n    at IncomingMessage.onEnd (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\raw-body\\\\index.js:287:7)\\n    at IncomingMessage.emit (node:events:509:28)\\n    at endReadableNT (node:internal/streams/readable:1735:12)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)\",\"path\":\"/api/users/register\",\"method\":\"POST\"}","timestamp":"2026-06-17T20:28:04.113Z"}
+{"level":"error","message":"{\"message\":\"Expected ':' after property name in JSON at position 61 (line 3 column 32)\",\"stack\":\"SyntaxError: Expected ':' after property name in JSON at position 61 (line 3 column 32)\\n    at JSON.parse (<anonymous>)\\n    at parse (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\body-parser\\\\lib\\\\types\\\\json.js:72:19)\\n    at E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\body-parser\\\\lib\\\\read.js:162:18\\n    at AsyncResource.runInAsyncScope (node:async_hooks:227:14)\\n    at invokeCallback (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\raw-body\\\\index.js:238:16)\\n    at done (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\raw-body\\\\index.js:227:7)\\n    at IncomingMessage.onEnd (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\raw-body\\\\index.js:287:7)\\n    at IncomingMessage.emit (node:events:509:28)\\n    at endReadableNT (node:internal/streams/readable:1735:12)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)\",\"path\":\"/api/users/register\",\"method\":\"POST\"}","timestamp":"2026-06-17T20:28:07.813Z"}
+{"level":"error","message":"{\"message\":\"Expected ':' after property name in JSON at position 61 (line 3 column 32)\",\"stack\":\"SyntaxError: Expected ':' after property name in JSON at position 61 (line 3 column 32)\\n    at JSON.parse (<anonymous>)\\n    at parse (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\body-parser\\\\lib\\\\types\\\\json.js:72:19)\\n    at E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\body-parser\\\\lib\\\\read.js:162:18\\n    at AsyncResource.runInAsyncScope (node:async_hooks:227:14)\\n    at invokeCallback (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\raw-body\\\\index.js:238:16)\\n    at done (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\raw-body\\\\index.js:227:7)\\n    at IncomingMessage.onEnd (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\raw-body\\\\index.js:287:7)\\n    at IncomingMessage.emit (node:events:509:28)\\n    at endReadableNT (node:internal/streams/readable:1735:12)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)\",\"path\":\"/api/users/register\",\"method\":\"POST\"}","timestamp":"2026-06-17T20:28:09.532Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:29:38.927Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:29:38.934Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:31:41.678Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:31:41.683Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a3304441877b9d1220ca516\",\"email\":\"t***t@example.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T20:32:04.856Z\"}","timestamp":"2026-06-17T20:32:04.856Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a3304441877b9d1220ca516\",\"otpId\":\"6a3304441877b9d1220ca51a\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T20:42:04.874Z\",\"timestamp\":\"2026-06-17T20:32:04.979Z\"}","timestamp":"2026-06-17T20:32:04.979Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a3304441877b9d1220ca516\",\"email\":\"t***t@example.com\",\"type\":\"email_verify\",\"otpId\":\"6a3304441877b9d1220ca51a\",\"timestamp\":\"2026-06-17T20:32:04.979Z\"}","timestamp":"2026-06-17T20:32:04.980Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a3304441877b9d1220ca516\",\"email\":\"t***t@example.com\",\"type\":\"email_verify\",\"otpId\":\"6a3304441877b9d1220ca51a\",\"messageId\":\"<bc50c499-84db-b5e7-4288-512ce72f2873@gmail.com>\",\"timestamp\":\"2026-06-17T20:32:07.234Z\"}","timestamp":"2026-06-17T20:32:07.234Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:46:18.182Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:46:18.192Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:46:18.233Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:46:18.246Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:46:20.421Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:46:20.437Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:46:20.451Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:46:20.460Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:46:35.117Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:46:35.126Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:46:35.135Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:46:35.152Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:47:16.072Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:47:16.080Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:47:16.099Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:47:16.108Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:47:25.139Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:47:25.151Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:47:25.199Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:47:25.211Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:47:32.106Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:47:32.123Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:47:32.124Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:47:32.134Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:50:16.736Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:50:16.751Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:50:16.755Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:50:16.762Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:51:45.138Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:51:45.146Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:51:45.190Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:51:45.197Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:52:21.283Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:52:21.289Z"}
+{"level":"error","message":"{\"message\":\"Expected ':' after property name in JSON at position 61 (line 3 column 32)\",\"stack\":\"SyntaxError: Expected ':' after property name in JSON at position 61 (line 3 column 32)\\n    at JSON.parse (<anonymous>)\\n    at parse (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\body-parser\\\\lib\\\\types\\\\json.js:72:19)\\n    at E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\body-parser\\\\lib\\\\read.js:162:18\\n    at AsyncResource.runInAsyncScope (node:async_hooks:227:14)\\n    at invokeCallback (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\raw-body\\\\index.js:238:16)\\n    at done (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\raw-body\\\\index.js:227:7)\\n    at IncomingMessage.onEnd (E:\\\\Full_stack\\\\MERN Stack Social Media App\\\\Social-back\\\\node_modules\\\\raw-body\\\\index.js:287:7)\\n    at IncomingMessage.emit (node:events:509:28)\\n    at endReadableNT (node:internal/streams/readable:1735:12)\\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)\",\"path\":\"/api/users/register\",\"method\":\"POST\"}","timestamp":"2026-06-17T20:52:59.961Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T20:53:11.509Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T20:53:11.514Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a330940e854b2e38c49d06b\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T20:53:20.919Z\"}","timestamp":"2026-06-17T20:53:20.919Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a330940e854b2e38c49d06b\",\"otpId\":\"6a330941e854b2e38c49d06f\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T21:03:20.924Z\",\"timestamp\":\"2026-06-17T20:53:21.005Z\"}","timestamp":"2026-06-17T20:53:21.005Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a330940e854b2e38c49d06b\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a330941e854b2e38c49d06f\",\"timestamp\":\"2026-06-17T20:53:21.005Z\"}","timestamp":"2026-06-17T20:53:21.005Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a330940e854b2e38c49d06b\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a330941e854b2e38c49d06f\",\"messageId\":\"<fe79f490-8a64-1294-63cc-0d9dc7b8f358@gmail.com>\",\"timestamp\":\"2026-06-17T20:53:23.100Z\"}","timestamp":"2026-06-17T20:53:23.100Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a330953e854b2e38c49d076\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T20:53:39.063Z\"}","timestamp":"2026-06-17T20:53:39.063Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a330953e854b2e38c49d076\",\"otpId\":\"6a330953e854b2e38c49d07a\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T21:03:39.075Z\",\"timestamp\":\"2026-06-17T20:53:39.162Z\"}","timestamp":"2026-06-17T20:53:39.162Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a330953e854b2e38c49d076\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a330953e854b2e38c49d07a\",\"timestamp\":\"2026-06-17T20:53:39.163Z\"}","timestamp":"2026-06-17T20:53:39.163Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a330953e854b2e38c49d076\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a330953e854b2e38c49d07a\",\"messageId\":\"<dc26d14b-7102-b710-0e69-d63031fa8b42@gmail.com>\",\"timestamp\":\"2026-06-17T20:53:41.278Z\"}","timestamp":"2026-06-17T20:53:41.278Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:01:47.266Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:01:47.272Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a330b3ce854b2e38c49d081\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T21:01:48.907Z\"}","timestamp":"2026-06-17T21:01:48.907Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a330b3ce854b2e38c49d081\",\"otpId\":\"6a330b3de854b2e38c49d085\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T21:11:48.912Z\",\"timestamp\":\"2026-06-17T21:01:49.008Z\"}","timestamp":"2026-06-17T21:01:49.008Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a330b3ce854b2e38c49d081\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a330b3de854b2e38c49d085\",\"timestamp\":\"2026-06-17T21:01:49.009Z\"}","timestamp":"2026-06-17T21:01:49.009Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a330b3ce854b2e38c49d081\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a330b3de854b2e38c49d085\",\"messageId\":\"<cf38789b-22ae-51c6-ee2f-9fde8277eea6@gmail.com>\",\"timestamp\":\"2026-06-17T21:01:50.991Z\"}","timestamp":"2026-06-17T21:01:50.991Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a330b4ae854b2e38c49d08c\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T21:02:02.913Z\"}","timestamp":"2026-06-17T21:02:02.913Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a330b4ae854b2e38c49d08c\",\"otpId\":\"6a330b4ae854b2e38c49d090\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T21:12:02.915Z\",\"timestamp\":\"2026-06-17T21:02:02.989Z\"}","timestamp":"2026-06-17T21:02:02.989Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a330b4ae854b2e38c49d08c\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a330b4ae854b2e38c49d090\",\"timestamp\":\"2026-06-17T21:02:02.989Z\"}","timestamp":"2026-06-17T21:02:02.989Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a330b4ae854b2e38c49d08c\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a330b4ae854b2e38c49d090\",\"messageId\":\"<662d082d-64cf-ba10-d1d4-263204b3af54@gmail.com>\",\"timestamp\":\"2026-06-17T21:02:07.081Z\"}","timestamp":"2026-06-17T21:02:07.082Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a330b62e854b2e38c49d097\",\"email\":\"m***9@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T21:02:26.312Z\"}","timestamp":"2026-06-17T21:02:26.312Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a330b62e854b2e38c49d097\",\"otpId\":\"6a330b62e854b2e38c49d09b\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T21:12:26.324Z\",\"timestamp\":\"2026-06-17T21:02:26.420Z\"}","timestamp":"2026-06-17T21:02:26.420Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a330b62e854b2e38c49d097\",\"email\":\"m***9@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a330b62e854b2e38c49d09b\",\"timestamp\":\"2026-06-17T21:02:26.421Z\"}","timestamp":"2026-06-17T21:02:26.421Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a330b62e854b2e38c49d097\",\"email\":\"m***9@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a330b62e854b2e38c49d09b\",\"messageId\":\"<736bbec6-82c1-144c-86b3-21b1b98b7bbf@gmail.com>\",\"timestamp\":\"2026-06-17T21:02:28.265Z\"}","timestamp":"2026-06-17T21:02:28.265Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:14:28.848Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:14:28.853Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a330e41e854b2e38c49d0a5\",\"email\":\"m***9@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T21:14:41.941Z\"}","timestamp":"2026-06-17T21:14:41.941Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a330e41e854b2e38c49d0a5\",\"otpId\":\"6a330e42e854b2e38c49d0a9\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T21:24:41.944Z\",\"timestamp\":\"2026-06-17T21:14:42.090Z\"}","timestamp":"2026-06-17T21:14:42.091Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a330e41e854b2e38c49d0a5\",\"email\":\"m***9@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a330e42e854b2e38c49d0a9\",\"timestamp\":\"2026-06-17T21:14:42.091Z\"}","timestamp":"2026-06-17T21:14:42.091Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:14:43.205Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:14:43.211Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a330e41e854b2e38c49d0a5\",\"email\":\"m***9@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a330e42e854b2e38c49d0a9\",\"messageId\":\"<593d03b5-7f9e-fa1f-aaa2-add0c10064a7@gmail.com>\",\"timestamp\":\"2026-06-17T21:14:44.084Z\"}","timestamp":"2026-06-17T21:14:44.084Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:17:00.880Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:17:00.882Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:17:00.889Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:17:00.894Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:18:17.302Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:18:17.350Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:18:18.224Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:18:18.237Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:18:21.139Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:18:21.148Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:18:21.223Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:18:21.232Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:26:42.377Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:26:42.383Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a331115810ab5f5e8673104\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T21:26:45.414Z\"}","timestamp":"2026-06-17T21:26:45.414Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a331115810ab5f5e8673104\",\"otpId\":\"6a331115810ab5f5e8673108\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T21:36:45.420Z\",\"timestamp\":\"2026-06-17T21:26:45.520Z\"}","timestamp":"2026-06-17T21:26:45.520Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a331115810ab5f5e8673104\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a331115810ab5f5e8673108\",\"timestamp\":\"2026-06-17T21:26:45.521Z\"}","timestamp":"2026-06-17T21:26:45.521Z"}
+{"level":"error","message":"SMTP transporter verify failed: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-4606f2ce361sm54176767f8f.31 - gsmtp","timestamp":"2026-06-17T21:26:46.406Z"}
+{"level":"error","message":"{\"event\":\"EMAIL_SEND_FAILED\",\"userId\":\"6a331115810ab5f5e8673104\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a331115810ab5f5e8673108\",\"error\":\"Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials ffacd0b85a97d-4606f2ce361sm54176767f8f.31 - gsmtp\",\"timestamp\":\"2026-06-17T21:26:46.418Z\"}","timestamp":"2026-06-17T21:26:46.418Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:33:27.373Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:33:27.383Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:33:27.387Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:33:27.398Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:33:33.675Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:33:33.687Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:33:33.685Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:33:33.696Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:33:38.066Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:33:38.075Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:33:38.074Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:33:38.082Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:42:30.060Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:42:30.066Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a3314c6b2bb4aa12e805d88\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T21:42:30.486Z\"}","timestamp":"2026-06-17T21:42:30.486Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a3314c6b2bb4aa12e805d88\",\"otpId\":\"6a3314c6b2bb4aa12e805d96\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T21:52:30.502Z\",\"timestamp\":\"2026-06-17T21:42:30.608Z\"}","timestamp":"2026-06-17T21:42:30.608Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a3314c6b2bb4aa12e805d88\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a3314c6b2bb4aa12e805d96\",\"timestamp\":\"2026-06-17T21:42:30.609Z\"}","timestamp":"2026-06-17T21:42:30.609Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a3314c6b2bb4aa12e805d88\",\"email\":\"m***2@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a3314c6b2bb4aa12e805d96\",\"messageId\":\"<fb9cb4fa-a6c1-de14-1f25-776054977c04@gmail.com>\",\"timestamp\":\"2026-06-17T21:42:32.728Z\"}","timestamp":"2026-06-17T21:42:32.728Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a3314efb2bb4aa12e805da1\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T21:43:11.876Z\"}","timestamp":"2026-06-17T21:43:11.876Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a3314efb2bb4aa12e805da1\",\"otpId\":\"6a3314efb2bb4aa12e805da5\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T21:53:11.880Z\",\"timestamp\":\"2026-06-17T21:43:11.982Z\"}","timestamp":"2026-06-17T21:43:11.982Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a3314efb2bb4aa12e805da1\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a3314efb2bb4aa12e805da5\",\"timestamp\":\"2026-06-17T21:43:11.983Z\"}","timestamp":"2026-06-17T21:43:11.983Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a3314efb2bb4aa12e805da1\",\"email\":\"m***7@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a3314efb2bb4aa12e805da5\",\"messageId\":\"<94240cf3-755d-4df4-0231-86ad724bb1e1@gmail.com>\",\"timestamp\":\"2026-06-17T21:43:14.063Z\"}","timestamp":"2026-06-17T21:43:14.063Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T21:46:34.429Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T21:46:34.465Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATION_START\",\"userId\":\"6a331637320bddff68318a02\",\"email\":\"s***5@gmail.com\",\"type\":\"email_verify\",\"timestamp\":\"2026-06-17T21:48:39.919Z\"}","timestamp":"2026-06-17T21:48:39.920Z"}
+{"level":"info","message":"{\"event\":\"OTP_CREATED\",\"userId\":\"6a331637320bddff68318a02\",\"otpId\":\"6a331638320bddff68318a06\",\"type\":\"email_verify\",\"expiresAt\":\"2026-06-17T21:58:39.984Z\",\"timestamp\":\"2026-06-17T21:48:40.602Z\"}","timestamp":"2026-06-17T21:48:40.603Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_ATTEMPT\",\"userId\":\"6a331637320bddff68318a02\",\"email\":\"s***5@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a331638320bddff68318a06\",\"timestamp\":\"2026-06-17T21:48:40.605Z\"}","timestamp":"2026-06-17T21:48:40.606Z"}
+{"level":"info","message":"{\"event\":\"EMAIL_SEND_SUCCESS\",\"userId\":\"6a331637320bddff68318a02\",\"email\":\"s***5@gmail.com\",\"type\":\"email_verify\",\"otpId\":\"6a331638320bddff68318a06\",\"messageId\":\"<18f26a0f-2f10-7c84-19e8-16c1713a6624@gmail.com>\",\"timestamp\":\"2026-06-17T21:48:42.870Z\"}","timestamp":"2026-06-17T21:48:42.870Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T22:12:55.493Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T22:12:55.500Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T22:13:35.783Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T22:13:35.799Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T22:17:56.764Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T22:17:56.774Z"}
+{"level":"info","message":"Connected to MongoDB: mongodb://127.0.0.1:27017/social-app","timestamp":"2026-06-17T22:21:48.564Z"}
+{"level":"info","message":"Server running on port 5000 — DB connected: true","timestamp":"2026-06-17T22:21:48.570Z"}

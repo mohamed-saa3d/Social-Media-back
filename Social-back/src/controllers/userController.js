@@ -18,11 +18,10 @@ export const registerUser = async (req, res) => {
       },
     });
 
-    setRefreshCookie(res, result.refreshToken, result.cookieOptions);
+    // Registration creates the user and sends verification email. Do not issue tokens here.
     return res.status(201).json({
       success: true,
-      token: result.token,
-      user: result.user,
+      message: result.message || 'User created. Verification required.',
     });
   } catch (error) {
     return handleServiceError(res, error);

@@ -5,14 +5,13 @@ const otpSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
-    index: true,
   },
   codeHash: {
     type: String,
     required: true,
     trim: true,
-    minlength: 32,
-    maxlength: 255,
+    min_length: 32,
+    max_length: 255,
   },
   type: {
     type: String,

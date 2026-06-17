@@ -16,6 +16,7 @@
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
+    "dns": "^0.2.2",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "express-rate-limit": "^8.3.2",
@@ -26,6 +27,8 @@
     "mongodb": "^7.0.0",
     "mongoose": "^9.1.2",
     "multer": "^2.1.1",
+    "nodemailer": "^9.0.0",
+    "rate-limiter-flexible": "^11.2.0",
     "swagger-ui-express": "^5.0.1",
     "winston": "^3.18.3"
   },
