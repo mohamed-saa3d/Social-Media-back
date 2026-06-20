@@ -4,7 +4,7 @@ import OTP from '../models/OTP.js';
 import { AppError } from '../utils/appError.js';
 import { OTP_TYPES, validateOtpExpiresAt } from '../validations/otp.validation.js';
 
-const DEFAULT_OTP_TTL_MS = 10 * 60 * 1000;
+const DEFAULT_OTP_TTL_MS = 5 * 60 * 1000;
 const OTP_LENGTH = 6;
 const OTP_HASH_ROUNDS = 10;
 const OTP_RESEND_COOLDOWN_MS = 60 * 1000;

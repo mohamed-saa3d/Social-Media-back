@@ -68,7 +68,6 @@ export const verifyEmail = async (req, res) => {
       success: true,
       user: { id: user._id, username: user.username, email: user.email },
       accessToken: authPayload.accessToken,
-      refreshToken: authPayload.refreshToken,
     });
   } catch (error) {
     return handleServiceError(res, error);
