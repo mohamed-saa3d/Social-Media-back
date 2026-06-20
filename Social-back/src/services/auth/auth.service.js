@@ -41,23 +41,11 @@ const issueAuthPayload = async (user, requestMeta = {}) => {
 };
 
 export const registerUser = async (args) => {
-  // Keep registration responsibilities in registerService (creates user, sends verification email)
+  // Delegate registration to registerService which creates the user,
+  // generates and sends the verification OTP/email and returns the result.
+  // Do NOT issue tokens or create sessions at registration.
   const result = await registerService.registerUser(args);
-
-  // For backwards compatibility with the auth controller, issue tokens and session
-  const user = await User.findById(result.user.id);
-  if (!user) return result;
-
-  const authPayload = await issueAuthPayload(user, args.requestMeta);
-
-  return {
-    ...result,
-    user: authPayload.user,
-    accessToken: authPayload.accessToken,
-    token: authPayload.accessToken,
-    refreshToken: authPayload.refreshToken,
-    cookieOptions: authPayload.cookieOptions,
-  };
+  return result;
 };
 
 export const loginUser = async (args) => loginService.loginUser(args);

@@ -17,13 +17,8 @@ export const registerUser = async (req, res) => {
       },
     });
 
-    setRefreshCookie(res, result.refreshToken, result.cookieOptions);
-    return res.status(201).json({
-      success: true,
-      accessToken: result.accessToken,
-      token: result.token,
-      user: result.user,
-    });
+    // Return the registration result only. Do not set cookies or return tokens.
+    return res.status(201).json(result);
   } catch (error) {
     return handleServiceError(res, error);
   }

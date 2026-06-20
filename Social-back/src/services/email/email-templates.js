@@ -6,7 +6,7 @@ export const verificationEmail = ({ to, code }) => {
       <h2>Email Verification</h2>
       <p>Your verification code is:</p>
       <h1>${code}</h1>
-      <p>This code will expire soon.</p>
+      <p>Code valid for 5 minutes</p>
     </div>
   `;
 
