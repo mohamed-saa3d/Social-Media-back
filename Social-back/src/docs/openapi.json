@@ -443,9 +443,9 @@
             "type": "boolean",
             "example": true
           },
-          "token": {
+          "message": {
             "type": "string",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+            "example": "Registration successful. Verify your email to continue."
           },
           "user": {
             "$ref": "#/components/schemas/PublicAuthUser"
@@ -459,6 +459,10 @@
             "type": "string",
             "example": "Login successful"
           },
+          "accessToken": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
           "token": {
             "type": "string",
             "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
@@ -466,6 +470,14 @@
           "user": {
             "$ref": "#/components/schemas/PublicAuthUser"
           }
+        }
+      },
+      "VerifyEmailResponse": {
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean", "example": true },
+          "user": { "$ref": "#/components/schemas/PublicAuthUser" },
+          "accessToken": { "type": "string", "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }
         }
       },
       "MessageResponse": {
@@ -920,7 +932,7 @@
                 },
                 "example": {
                   "success": true,
-                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                  "message": "Registration successful. Verify your email to continue.",
                   "user": {
                     "id": "66c2d3a4e0b0c1a2b3c4d5e6",
                     "username": "jane_doe",
@@ -932,7 +944,7 @@
                     "summary": "Success response example",
                     "value": {
                       "success": true,
-                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+                      "message": "Registration successful. Verify your email to continue.",
                       "user": {
                         "id": "66c2d3a4e0b0c1a2b3c4d5e6",
                         "username": "jane_doe",
@@ -1107,6 +1119,7 @@
                 },
                 "example": {
                   "message": "Login successful",
+                  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
                   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
                   "user": {
                     "id": "66c2d3a4e0b0c1a2b3c4d5e6",
@@ -1119,6 +1132,7 @@
                     "summary": "Success response example",
                     "value": {
                       "message": "Login successful",
+                      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
                       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
                       "user": {
                         "id": "66c2d3a4e0b0c1a2b3c4d5e6",
@@ -2455,6 +2469,102 @@
                 "schema": {
                   "$ref": "#/components/schemas/OtpVerifyResponse"
                 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/otp/verify-email": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Verify email using OTP (public)",
+        "description": "Verifies an email using a code sent by email. On success returns access token and sets refresh token as an HttpOnly cookie (Set-Cookie). The refresh token MUST NOT be present in the JSON response body.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["email","code"],
+                "properties": {
+                  "email": { "type": "string", "format": "email", "example": "jane@example.com" },
+                  "code": { "type": "string", "example": "123456" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Email verified — access token returned and refresh cookie set",
+            "headers": {
+              "Set-Cookie": {
+                "description": "HttpOnly refreshToken cookie is set on successful verification",
+                "schema": { "type": "string" }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/VerifyEmailResponse" },
+                "example": { "success": true, "user": { "id": "66c2d3a4e0b0c1a2b3c4d5e6", "username": "jane_doe", "email": "jane@example.com" }, "accessToken": "eyJ..." }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/otp/resend-verification": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Resend verification email",
+        "description": "Sends a new verification OTP to the given email. Previous OTPs are invalidated.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "type": "object", "required":["email"], "properties": { "email": { "type":"string", "format":"email", "example":"jane@example.com" } } }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Verification email sent",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/MessageResponse" },
+                "example": { "success": true, "message": "Verification email sent" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/refresh": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Refresh access token using refresh cookie",
+        "description": "Exchanges a valid refresh token (sent as HttpOnly cookie) for a new access token. The refresh token is rotated and set as an HttpOnly Set-Cookie header.",
+        "responses": {
+          "200": {
+            "description": "Tokens refreshed — refresh cookie rotated",
+            "headers": {
+              "Set-Cookie": {
+                "description": "HttpOnly refreshToken cookie is set on successful refresh",
+                "schema": { "type": "string" }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "accessToken": { "type": "string" },
+                    "token": { "type": "string" },
+                    "user": { "$ref": "#/components/schemas/PublicAuthUser" }
+                  }
+                },
+                "example": { "accessToken": "eyJ...", "token": "eyJ...", "user": { "id": "66c2...", "username": "jane_doe" } }
               }
             }
           }
