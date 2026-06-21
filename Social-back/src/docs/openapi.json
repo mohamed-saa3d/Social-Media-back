@@ -5,164 +5,237 @@
     "version": "1.0.0",
     "description": "Full MERN Social Media Backend API Documentation"
   },
-  "servers": [
-    {
-      "url": "http://localhost:5000"
-    }
-  ],
-  "tags": [
-    {
-      "name": "System",
-      "description": "Health and system endpoints"
-    },
-    {
-      "name": "Auth",
-      "description": "Authentication and password management"
-    },
-    {
-      "name": "Users",
-      "description": "User profile and follow APIs"
-    },
-    {
-      "name": "Posts",
-      "description": "Post feed and reactions"
-    },
-    {
-      "name": "Comments",
-      "description": "Comment CRUD APIs"
-    },
-    {
-      "name": "Notifications",
-      "description": "Notification inbox APIs"
-    },
-    {
-      "name": "Sessions",
-      "description": "Session management APIs"
-    },
-    {
-      "name": "Media",
-      "description": "Media upload APIs"
-    },
-    {
-      "name": "Admin",
-      "description": "Administrative APIs"
-    }
-    ,
-    {
-      "name": "Reports",
-      "description": "Content reporting APIs"
-    }
-  ],
   "components": {
-    "securitySchemes": {
-      "BearerAuth": {
-        "type": "http",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
+    "tags": [
+      {
+        "name": "Auth",
+        "description": "Authentication and password management"
+      },
+      {
+        "name": "Users",
+        "description": "User profile and follow APIs"
+      },
+      {
+        "name": "Posts",
+        "description": "Post feed and reactions"
+      },
+      {
+        "name": "Comments",
+        "description": "Comment CRUD APIs"
+      },
+      {
+        "name": "Notifications",
+        "description": "Notification inbox APIs"
+      },
+      {
+        "name": "Sessions",
+        "description": "Session management APIs"
+      },
+      {
+        "name": "Media",
+        "description": "Media upload APIs"
+      },
+      {
+        "name": "Admin",
+        "description": "Administrative APIs"
+      },
+      {
+        "name": "Reports",
+        "description": "Content reporting APIs"
+      }
+    ],
+    "servers": [
+      {
+        "url": "http://localhost:5000"
+      }
+    ],
+    "components": {
+      "securitySchemes": {
+        "BearerAuth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT"
+        }
+      },
+      "parameters": {
+        "PageParam": {
+          "name": "page",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 1
+          },
+          "description": "Page number for paginated endpoints.",
+          "examples": {
+            "default": {
+              "summary": "Page number",
+              "value": 1
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User registered successfully (verification email sent)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterUserResponse"
+                },
+                "example": {
+                  "success": true,
+                  "message": "User created. Verification required."
+                },
+                "examples": {
+                  "default": {
+                    "summary": "Success response example",
+                    "value": {
+                      "success": true,
+                      "message": "User created. Verification required."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
-    "parameters": {
-      "PageParam": {
-        "name": "page",
-        "in": "query",
-        "required": false,
-        "schema": {
-          "type": "integer",
-          "minimum": 1,
-          "example": 1
-        },
-        "description": "Page number for paginated endpoints.",
-        "examples": {
-          "default": {
-            "summary": "Page number",
-            "value": 1
-          }
-        }
+    "PostIdParam": {
+      "name": "postId",
+      "in": "path",
+      "required": true,
+      "schema": {
+        "$ref": "#/components/schemas/ObjectId"
       },
-      "LimitParam": {
-        "name": "limit",
-        "in": "query",
-        "required": false,
-        "schema": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 50,
-          "example": 10
-        },
-        "description": "Page size for paginated endpoints.",
-        "examples": {
-          "default": {
-            "summary": "Page size",
-            "value": 10
-          }
+      "description": "Post identifier.",
+      "examples": {
+        "default": {
+          "summary": "Post id",
+          "value": "66c2d3a4e0b0c1a2b3c4d5e9"
         }
+      }
+    },
+    "CommentIdParam": {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+        "$ref": "#/components/schemas/ObjectId"
       },
-      "UserIdParam": {
-        "name": "userId",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/ObjectId"
-        },
-        "description": "User identifier.",
-        "examples": {
-          "default": {
-            "summary": "User id",
-            "value": "66c2d3a4e0b0c1a2b3c4d5e6"
-          }
+      "description": "Comment identifier.",
+      "examples": {
+        "default": {
+          "summary": "Comment id",
+          "value": "66c2d3a4e0b0c1a2b3c4d5ea"
         }
+      }
+    },
+    "IdParam": {
+      "name": "id",
+      "in": "path",
+      "required": true,
+      "schema": {
+        "$ref": "#/components/schemas/ObjectId"
       },
-      "PostIdParam": {
-        "name": "postId",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/ObjectId"
-        },
-        "description": "Post identifier.",
-        "examples": {
-          "default": {
-            "summary": "Post id",
-            "value": "66c2d3a4e0b0c1a2b3c4d5e9"
-          }
-        }
-      },
-      "CommentIdParam": {
-        "name": "id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/ObjectId"
-        },
-        "description": "Comment identifier.",
-        "examples": {
-          "default": {
-            "summary": "Comment id",
-            "value": "66c2d3a4e0b0c1a2b3c4d5ea"
-          }
-        }
-      },
-      "IdParam": {
-        "name": "id",
-        "in": "path",
-        "required": true,
-        "schema": {
-          "$ref": "#/components/schemas/ObjectId"
-        },
-        "description": "Resource identifier.",
-        "examples": {
-          "default": {
-            "summary": "Resource id",
-            "value": "66c2d3a4e0b0c1a2b3c4d5e6"
-          }
+      "description": "Resource identifier.",
+      "examples": {
+        "default": {
+          "summary": "Resource id",
+          "value": "66c2d3a4e0b0c1a2b3c4d5e6"
         }
       }
     },
     "schemas": {
-      "ObjectId": {
-        "type": "string",
-        "pattern": "^[a-fA-F0-9]{24}$",
-        "example": "66c2d3a4e0b0c1a2b3c4d5e6"
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Unauthorized"
+          },
+          "error": {
+            "type": "string",
+            "example": "Forbidden"
+          },
+          "success": {
+            "type": "boolean",
+            "example": false
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "$ref": "#/components/schemas/ValidationIssue"
+                }
+              ]
+            }
+          },
+          "stack": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ValidationIssue": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "example": "field"
+          },
+          "msg": {
+            "type": "string",
+            "example": "Invalid value"
+          },
+          "path": {
+            "type": "string",
+            "example": "email"
+          },
+          "location": {
+            "type": "string",
+            "example": "body"
+          },
+          "value": {}
+        }
+      },
+      "ValidationErrorResponse": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ValidationIssue"
+            }
+          }
+        }
+      },
+      "RegisterUserResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "message": {
+            "type": "string",
+            "example": "User created. Verification required."
+          }
+        }
+      },
+      "MessageResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Success"
+          }
+        }
       },
       "PublicAuthUser": {
         "type": "object",
@@ -183,6 +256,75 @@
             "type": "string",
             "format": "email",
             "example": "jane@example.com"
+          }
+        }
+      },
+      "AuthLoginResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Login successful"
+          },
+          "accessToken": {
+            "type": "string",
+            "example": "eyJhbGciOi..."
+          },
+          "token": {
+            "type": "string",
+            "example": "eyJhbGciOi..."
+          },
+          "user": {
+            "$ref": "#/components/schemas/PublicAuthUser"
+          }
+        }
+      },
+      "UsersLoginResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Login successful"
+          },
+          "token": {
+            "type": "string",
+            "example": "eyJhbGciOi..."
+          },
+          "user": {
+            "$ref": "#/components/schemas/PublicAuthUser"
+          }
+        }
+      },
+      "VerifyEmailResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "example": true
+          },
+          "user": {
+            "$ref": "#/components/schemas/PublicAuthUser"
+          },
+          "accessToken": {
+            "type": "string",
+            "example": "eyJhbGciOi..."
+          }
+        }
+      },
+      "ObjectId": {
+        "type": "string",
+        "pattern": "^[a-fA-F0-9]{24}$",
+        "example": "66c2d3a4e0b0c1a2b3c4d5e6"
+      },
+      "CommentReply": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "text": {
+            "type": "string",
+            "example": "Thanks!"
           }
         }
       },
@@ -208,17 +350,15 @@
           },
           "avatar": {
             "type": "string",
-            "example": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+            "example": "/uploads/avatar.jpg"
           },
           "bio": {
             "type": "string",
-            "nullable": true,
-            "example": "Frontend engineer and coffee enthusiast."
+            "nullable": true
           },
           "location": {
             "type": "string",
-            "nullable": true,
-            "example": "Cairo"
+            "nullable": true
           },
           "followers": {
             "type": "array",
@@ -266,8 +406,7 @@
           },
           "image": {
             "type": "string",
-            "nullable": true,
-            "example": "/uploads/f4e1c8c8-1717760000000.jpg"
+            "nullable": true
           },
           "text": {
             "type": "string",
@@ -300,18 +439,6 @@
           "updatedAt": {
             "type": "string",
             "format": "date-time"
-          }
-        }
-      },
-      "CommentReply": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "$ref": "#/components/schemas/ObjectId"
-          },
-          "text": {
-            "type": "string",
-            "example": "Thanks!"
           }
         }
       },
@@ -390,52 +517,6 @@
           }
         }
       },
-      "SessionSummary": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "$ref": "#/components/schemas/ObjectId"
-          },
-          "deviceInfo": {
-            "type": "string",
-            "example": "Chrome on Windows"
-          },
-          "ipAddress": {
-            "type": "string",
-            "nullable": true,
-            "example": "127.0.0.1"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "expiresAt": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "MediaUpload": {
-        "type": "object",
-        "properties": {
-          "filename": {
-            "type": "string",
-            "example": "f4e1c8c8-1717760000000.jpg"
-          },
-          "mimetype": {
-            "type": "string",
-            "example": "image/jpeg"
-          },
-          "size": {
-            "type": "integer",
-            "example": 182736
-          },
-          "url": {
-            "type": "string",
-            "example": "/uploads/f4e1c8c8-1717760000000.jpg"
-          }
-        }
-      },
       "AuthRegisterResponse": {
         "type": "object",
         "properties": {
@@ -449,43 +530,6 @@
           },
           "user": {
             "$ref": "#/components/schemas/PublicAuthUser"
-          }
-        }
-      },
-      "AuthLoginResponse": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "example": "Login successful"
-          },
-          "accessToken": {
-            "type": "string",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-          },
-          "token": {
-            "type": "string",
-            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-          },
-          "user": {
-            "$ref": "#/components/schemas/PublicAuthUser"
-          }
-        }
-      },
-      "VerifyEmailResponse": {
-        "type": "object",
-        "properties": {
-          "success": { "type": "boolean", "example": true },
-          "user": { "$ref": "#/components/schemas/PublicAuthUser" },
-          "accessToken": { "type": "string", "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }
-        }
-      },
-      "MessageResponse": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "example": "Success"
           }
         }
       },
@@ -507,6 +551,29 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/UserProfile"
+            }
+          },
+          "page": {
+            "type": "integer",
+            "example": 1
+          },
+          "totalPages": {
+            "type": "integer",
+            "example": 4
+          },
+          "totalCount": {
+            "type": "integer",
+            "example": 38
+          }
+        }
+      },
+      "PaginatedPosts": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Post"
             }
           },
           "page": {
@@ -587,42 +654,6 @@
           }
         }
       },
-      "AdminStatsResponse": {
-        "type": "object",
-        "properties": {
-          "users": {
-            "type": "integer",
-            "example": 120
-          },
-          "posts": {
-            "type": "integer",
-            "example": 340
-          }
-        }
-      },
-      "PaginatedPosts": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Post"
-            }
-          },
-          "page": {
-            "type": "integer",
-            "example": 1
-          },
-          "totalPages": {
-            "type": "integer",
-            "example": 4
-          },
-          "totalCount": {
-            "type": "integer",
-            "example": 38
-          }
-        }
-      },
       "PaginatedComments": {
         "type": "object",
         "properties": {
@@ -669,150 +700,761 @@
           }
         }
       },
-      "ValidationIssue": {
+      "SessionSummary": {
         "type": "object",
         "properties": {
-          "type": {
+          "id": {
+            "$ref": "#/components/schemas/ObjectId"
+          },
+          "deviceInfo": {
             "type": "string",
-            "example": "field"
+            "example": "Chrome on Windows"
           },
-          "msg": {
+          "ipAddress": {
             "type": "string",
-            "example": "Invalid value"
+            "nullable": true,
+            "example": "127.0.0.1"
           },
-          "path": {
+          "createdAt": {
             "type": "string",
-            "example": "email"
+            "format": "date-time"
           },
-          "location": {
+          "updatedAt": {
             "type": "string",
-            "example": "body"
+            "format": "date-time"
           },
-          "value": {}
-        }
-      },
-      "ErrorResponse": {
-        "type": "object",
-        "properties": {
-          "message": {
+          "lastSeenAt": {
             "type": "string",
-            "example": "Unauthorized"
-          },
-          "error": {
-            "type": "string",
-            "example": "Forbidden"
-          },
-          "success": {
-            "type": "boolean",
-            "example": false
-          },
-          "errors": {
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "$ref": "#/components/schemas/ValidationIssue"
-                }
-              ]
-            }
-          },
-          "stack": {
-            "type": "string",
-            "nullable": true
+            "format": "date-time"
           }
         }
       },
-      "ValidationErrorResponse": {
+      "MediaUpload": {
         "type": "object",
         "properties": {
-          "errors": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ValidationIssue"
-            }
+          "filename": {
+            "type": "string",
+            "example": "f4e1c8c8-1717760000000.jpg"
+          },
+          "mimetype": {
+            "type": "string",
+            "example": "image/jpeg"
+          },
+          "size": {
+            "type": "integer",
+            "example": 182736
+          },
+          "url": {
+            "type": "string",
+            "example": "/uploads/f4e1c8c8-1717760000000.jpg"
+          }
+        }
+      },
+      "AdminStatsResponse": {
+        "type": "object",
+        "properties": {
+          "users": {
+            "type": "integer",
+            "example": 120
+          },
+          "posts": {
+            "type": "integer",
+            "example": 340
           }
         }
       }
+    }
+  },
+  "schemas": {
+    "ObjectId": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{24}$",
+      "example": "66c2d3a4e0b0c1a2b3c4d5e6"
     },
-    "examples": {
-      "HealthExample": {
-        "summary": "Healthy server",
-        "value": {
-          "status": "ok",
-          "port": 5000,
-          "dbConnected": true
+    "PublicAuthUser": {
+      "type": "object",
+      "required": [
+        "id",
+        "username",
+        "email"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "username": {
+          "type": "string",
+          "example": "jane_doe"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "example": "jane@example.com"
         }
-      },
-      "RegisterUserRequest": {
-        "summary": "Register request",
-        "value": {
+      }
+    },
+    "UserProfile": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "name": {
+          "type": "string",
+          "nullable": true,
+          "example": "Jane Doe"
+        },
+        "username": {
+          "type": "string",
+          "example": "jane_doe"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "example": "jane@example.com"
+        },
+        "avatar": {
+          "type": "string",
+          "example": "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+        },
+        "bio": {
+          "type": "string",
+          "nullable": true,
+          "example": "Frontend engineer and coffee enthusiast."
+        },
+        "location": {
+          "type": "string",
+          "nullable": true,
+          "example": "Cairo"
+        },
+        "followers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ObjectId"
+          }
+        },
+        "following": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ObjectId"
+          }
+        },
+        "isAdmin": {
+          "type": "boolean",
+          "example": false
+        },
+        "isActive": {
+          "type": "boolean",
+          "example": true
+        },
+        "lastActiveAt": {
+          "type": "string",
+          "format": "date-time",
+          "nullable": true
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Post": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "userId": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "image": {
+          "type": "string",
+          "nullable": true,
+          "example": "/uploads/f4e1c8c8-1717760000000.jpg"
+        },
+        "text": {
+          "type": "string",
+          "nullable": true,
+          "example": "A new post from the feed."
+        },
+        "visibility": {
+          "type": "string",
+          "enum": [
+            "public",
+            "private",
+            "friends"
+          ],
+          "example": "public"
+        },
+        "likes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ObjectId"
+          }
+        },
+        "commentsCount": {
+          "type": "integer",
+          "example": 2
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "CommentReply": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "text": {
+          "type": "string",
+          "example": "Thanks!"
+        }
+      }
+    },
+    "Comment": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "userId": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "postId": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "text": {
+          "type": "string",
+          "example": "Nice post!"
+        },
+        "replies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/CommentReply"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "Notification": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "like",
+            "follow",
+            "comment"
+          ],
+          "example": "like"
+        },
+        "actor": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "recipient": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "post": {
+          "$ref": "#/components/schemas/ObjectId",
+          "nullable": true
+        },
+        "comment": {
+          "$ref": "#/components/schemas/ObjectId",
+          "nullable": true
+        },
+        "read": {
+          "type": "boolean",
+          "example": false
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "SessionSummary": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "deviceInfo": {
+          "type": "string",
+          "example": "Chrome on Windows"
+        },
+        "ipAddress": {
+          "type": "string",
+          "nullable": true,
+          "example": "127.0.0.1"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastSeenAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "MediaUpload": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string",
+          "example": "f4e1c8c8-1717760000000.jpg"
+        },
+        "mimetype": {
+          "type": "string",
+          "example": "image/jpeg"
+        },
+        "size": {
+          "type": "integer",
+          "example": 182736
+        },
+        "url": {
+          "type": "string",
+          "example": "/uploads/f4e1c8c8-1717760000000.jpg"
+        }
+      }
+    },
+    "AuthRegisterResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "Registration successful. Verify your email to continue."
+        },
+        "user": {
+          "$ref": "#/components/schemas/PublicAuthUser"
+        }
+      }
+    },
+    "RegisterUserResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": true
+        },
+        "message": {
+          "type": "string",
+          "example": "User created. Verification required."
+        }
+      }
+    },
+    "AuthLoginResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Login successful"
+        },
+        "accessToken": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        },
+        "token": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        },
+        "user": {
+          "$ref": "#/components/schemas/PublicAuthUser"
+        }
+      }
+    },
+    "UsersLoginResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Login successful"
+        },
+        "token": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        },
+        "user": {
+          "$ref": "#/components/schemas/PublicAuthUser"
+        }
+      }
+    },
+    "VerifyEmailResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "example": true
+        },
+        "user": {
+          "$ref": "#/components/schemas/PublicAuthUser"
+        },
+        "accessToken": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        }
+      }
+    },
+    "MessageResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Success"
+        }
+      }
+    },
+    "FollowResponse": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "$ref": "#/components/schemas/UserProfile"
+        },
+        "actor": {
+          "$ref": "#/components/schemas/UserProfile"
+        }
+      }
+    },
+    "PaginatedUsers": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/UserProfile"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "example": 1
+        },
+        "totalPages": {
+          "type": "integer",
+          "example": 4
+        },
+        "totalCount": {
+          "type": "integer",
+          "example": 38
+        }
+      }
+    },
+    "Report": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "reporterId": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "targetId": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "targetType": {
+          "type": "string",
+          "example": "post"
+        },
+        "reason": {
+          "type": "string",
+          "example": "spam"
+        },
+        "description": {
+          "type": "string",
+          "nullable": true
+        },
+        "status": {
+          "type": "string",
+          "example": "pending"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "OtpGenerateResponse": {
+      "type": "object",
+      "properties": {
+        "otp": {
+          "$ref": "#/components/schemas/ObjectId"
+        },
+        "code": {
+          "type": "string"
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "OtpVerifyResponse": {
+      "type": "object",
+      "properties": {
+        "verified": {
+          "type": "boolean"
+        },
+        "otp": {
+          "$ref": "#/components/schemas/ObjectId"
+        }
+      }
+    },
+    "AdminStatsResponse": {
+      "type": "object",
+      "properties": {
+        "users": {
+          "type": "integer",
+          "example": 120
+        },
+        "posts": {
+          "type": "integer",
+          "example": 340
+        }
+      }
+    },
+    "PaginatedPosts": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Post"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "example": 1
+        },
+        "totalPages": {
+          "type": "integer",
+          "example": 4
+        },
+        "totalCount": {
+          "type": "integer",
+          "example": 38
+        }
+      }
+    },
+    "PaginatedComments": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Comment"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "example": 1
+        },
+        "totalPages": {
+          "type": "integer",
+          "example": 3
+        },
+        "totalCount": {
+          "type": "integer",
+          "example": 24
+        }
+      }
+    },
+    "PaginatedNotifications": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Notification"
+          }
+        },
+        "page": {
+          "type": "integer",
+          "example": 1
+        },
+        "totalPages": {
+          "type": "integer",
+          "example": 2
+        },
+        "totalCount": {
+          "type": "integer",
+          "example": 12
+        }
+      }
+    },
+    "ValidationIssue": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "example": "field"
+        },
+        "msg": {
+          "type": "string",
+          "example": "Invalid value"
+        },
+        "path": {
+          "type": "string",
+          "example": "email"
+        },
+        "location": {
+          "type": "string",
+          "example": "body"
+        },
+        "value": {}
+      }
+    },
+    "ErrorResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Unauthorized"
+        },
+        "error": {
+          "type": "string",
+          "example": "Forbidden"
+        },
+        "success": {
+          "type": "boolean",
+          "example": false
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/ValidationIssue"
+              }
+            ]
+          }
+        },
+        "stack": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "ValidationErrorResponse": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ValidationIssue"
+          }
+        }
+      }
+    }
+  },
+  "examples": {
+    "HealthExample": {
+      "summary": "Healthy server",
+      "value": {
+        "status": "ok",
+        "port": 5000,
+        "dbConnected": true
+      }
+    },
+    "RegisterUserRequest": {
+      "summary": "Register request",
+      "value": {
+        "username": "jane_doe",
+        "email": "jane@example.com",
+        "password": "StrongP@ssw0rd!"
+      }
+    },
+    "RegisterUserResponse": {
+      "summary": "Register response",
+      "value": {
+        "success": true,
+        "message": "User created. Verification required."
+      }
+    },
+    "LoginUserRequest": {
+      "summary": "Login request",
+      "value": {
+        "email": "jane@example.com",
+        "password": "StrongP@ssw0rd!"
+      }
+    },
+    "LoginUserResponse": {
+      "summary": "Login response",
+      "value": {
+        "message": "Login successful",
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+        "user": {
+          "id": "66c2d3a4e0b0c1a2b3c4d5e6",
           "username": "jane_doe",
-          "email": "jane@example.com",
-          "password": "StrongP@ssw0rd!"
+          "email": "jane@example.com"
         }
-      },
-      "RegisterUserResponse": {
-        "summary": "Register response",
-        "value": {
-          "success": true,
-          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-          "user": {
-            "id": "66c2d3a4e0b0c1a2b3c4d5e6",
-            "username": "jane_doe",
-            "email": "jane@example.com"
-          }
-        }
-      },
-      "LoginUserRequest": {
-        "summary": "Login request",
-        "value": {
-          "email": "jane@example.com",
-          "password": "StrongP@ssw0rd!"
-        }
-      },
-      "LoginUserResponse": {
-        "summary": "Login response",
-        "value": {
-          "message": "Login successful",
-          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-          "user": {
-            "id": "66c2d3a4e0b0c1a2b3c4d5e6",
-            "username": "jane_doe",
-            "email": "jane@example.com"
-          }
-        }
-      },
-      "PasswordChangeRequest": {
-        "summary": "Password change request",
-        "value": {
-          "currentPassword": "OldP@ssw0rd!",
-          "newPassword": "NewP@ssw0rd!",
-          "confirmNewPassword": "NewP@ssw0rd!"
-        }
-      },
-      "PostCreateRequest": {
-        "summary": "Create post request",
-        "value": {
-          "text": "Hello from my feed.",
-          "image": "/uploads/example.jpg",
-          "visibility": "public"
-        }
-      },
-      "CommentCreateRequest": {
-        "summary": "Create comment request",
-        "value": {
-          "postId": "66c2d3a4e0b0c1a2b3c4d5e9",
-          "text": "Nice post!"
-        }
-      },
-      "MediaUploadRequest": {
-        "summary": "Media upload request",
-        "value": {
-          "file": "(binary file)"
-        }
+      }
+    },
+    "PasswordChangeRequest": {
+      "summary": "Password change request",
+      "value": {
+        "currentPassword": "OldP@ssw0rd!",
+        "newPassword": "NewP@ssw0rd!",
+        "confirmNewPassword": "NewP@ssw0rd!"
+      }
+    },
+    "PostCreateRequest": {
+      "summary": "Create post request",
+      "value": {
+        "text": "Hello from my feed.",
+        "image": "/uploads/example.jpg",
+        "visibility": "public"
+      }
+    },
+    "CommentCreateRequest": {
+      "summary": "Create comment request",
+      "value": {
+        "postId": "66c2d3a4e0b0c1a2b3c4d5e9",
+        "text": "Nice post!"
+      }
+    },
+    "MediaUploadRequest": {
+      "summary": "Media upload request",
+      "value": {
+        "file": "(binary file)"
       }
     }
   },
@@ -875,7 +1517,7 @@
           "Auth"
         ],
         "summary": "Register a new user",
-        "description": "Creates a user account, starts a session, and returns an access token plus refresh cookie.\n\n**Example request**\n\n```bash\ncurl -X POST -H \"Content-Type: application/json\" http://localhost:5000/api/users/register -d '{\"username\":\"jane_doe\",\"email\":\"jane@example.com\",\"password\":\"StrongP@ssw0rd!\"}'\n```",
+        "description": "Creates a user account and sends a verification email. This endpoint does NOT issue access or refresh tokens — verification is required via `/api/otp/verify-email`.\n\n**Example request**\n\n```bash\ncurl -X POST -H \"Content-Type: application/json\" http://localhost:5000/api/users/register -d '{\"username\":\"jane_doe\",\"email\":\"jane@example.com\",\"password\":\"StrongP@ssw0rd!\"}'\n```",
         "requestBody": {
           "required": true,
           "content": {
@@ -924,32 +1566,22 @@
         },
         "responses": {
           "201": {
-            "description": "User registered successfully",
+            "description": "User registered successfully (verification email sent)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuthRegisterResponse"
+                  "$ref": "#/components/schemas/RegisterUserResponse"
                 },
                 "example": {
                   "success": true,
-                  "message": "Registration successful. Verify your email to continue.",
-                  "user": {
-                    "id": "66c2d3a4e0b0c1a2b3c4d5e6",
-                    "username": "jane_doe",
-                    "email": "jane@example.com"
-                  }
+                  "message": "User created. Verification required."
                 },
                 "examples": {
                   "default": {
                     "summary": "Success response example",
                     "value": {
                       "success": true,
-                      "message": "Registration successful. Verify your email to continue.",
-                      "user": {
-                        "id": "66c2d3a4e0b0c1a2b3c4d5e6",
-                        "username": "jane_doe",
-                        "email": "jane@example.com"
-                      }
+                      "message": "User created. Verification required."
                     }
                   }
                 }
@@ -1063,13 +1695,72 @@
         "security": []
       }
     },
+    "/api/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Register a new user (auth namespace)",
+        "description": "Creates a user account and sends a verification email. This endpoint returns the created user metadata but does NOT set tokens or cookies. Use `/api/otp/verify-email` to verify and obtain tokens.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "username",
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created — verification email sent",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthRegisterResponse"
+                },
+                "example": {
+                  "success": true,
+                  "message": "User created. Verification email sent.",
+                  "user": {
+                    "id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                    "username": "jane_doe",
+                    "email": "jane@example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "authRegister",
+        "security": []
+      }
+    },
     "/api/users/login": {
       "post": {
         "tags": [
           "Auth"
         ],
         "summary": "Log in a user",
-        "description": "Authenticates a user, starts a session, and returns an access token plus refresh cookie.\n\n**Example request**\n\n```bash\ncurl -X POST -H \"Content-Type: application/json\" http://localhost:5000/api/users/login -d '{\"email\":\"jane@example.com\",\"password\":\"StrongP@ssw0rd!\"}'\n```",
+        "description": "Authenticates a user, starts a session, sets an HttpOnly refresh cookie, and returns the access token in the `token` field (JSON) along with the user object. This path returns `token` (access token) in the JSON body — it does not include a separate `accessToken` property.",
         "requestBody": {
           "required": true,
           "content": {
@@ -1115,11 +1806,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AuthLoginResponse"
+                  "$ref": "#/components/schemas/UsersLoginResponse"
                 },
                 "example": {
                   "message": "Login successful",
-                  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
                   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
                   "user": {
                     "id": "66c2d3a4e0b0c1a2b3c4d5e6",
@@ -1132,7 +1822,6 @@
                     "summary": "Success response example",
                     "value": {
                       "message": "Login successful",
-                      "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
                       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
                       "user": {
                         "id": "66c2d3a4e0b0c1a2b3c4d5e6",
@@ -1249,6 +1938,88 @@
           }
         },
         "operationId": "loginUser",
+        "security": []
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Log in (auth namespace)",
+        "description": "Authenticates a user, starts a session, sets an HttpOnly refresh cookie, and returns both `accessToken` and `token` fields in JSON along with user metadata.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthLoginResponse"
+                },
+                "example": {
+                  "message": "Login successful",
+                  "accessToken": "eyJ...",
+                  "token": "eyJ...",
+                  "user": {
+                    "id": "66c2...",
+                    "username": "jane_doe",
+                    "email": "jane@example.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "authLogin",
+        "security": []
+      }
+    },
+    "/api/auth/logout": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Log out the current user (auth namespace)",
+        "description": "Revokes the active refresh token cookie and, when present, the bearer access token session.",
+        "responses": {
+          "200": {
+            "description": "Logout successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "message": "Logged out successfully"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "authLogout",
         "security": []
       }
     },
@@ -1976,8 +2747,8 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Created",
+          "200": {
+            "description": "Already following",
             "content": {
               "application/json": {
                 "schema": {
@@ -1986,8 +2757,8 @@
               }
             }
           },
-          "200": {
-            "description": "Already following",
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
@@ -2156,8 +2927,8 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Saved",
+          "200": {
+            "description": "Already saved",
             "content": {
               "application/json": {
                 "schema": {
@@ -2166,8 +2937,8 @@
               }
             }
           },
-          "200": {
-            "description": "Already saved",
+          "201": {
+            "description": "Saved",
             "content": {
               "application/json": {
                 "schema": {
@@ -2284,8 +3055,8 @@
           }
         },
         "responses": {
-          "201": {
-            "description": "Created",
+          "200": {
+            "description": "Duplicate report",
             "content": {
               "application/json": {
                 "schema": {
@@ -2294,8 +3065,8 @@
               }
             }
           },
-          "200": {
-            "description": "Duplicate report",
+          "201": {
+            "description": "Created",
             "content": {
               "application/json": {
                 "schema": {
@@ -2477,7 +3248,9 @@
     },
     "/api/otp/verify-email": {
       "post": {
-        "tags": ["Auth"],
+        "tags": [
+          "Auth"
+        ],
         "summary": "Verify email using OTP (public)",
         "description": "Verifies an email using a code sent by email. On success returns access token and sets refresh token as an HttpOnly cookie (Set-Cookie). The refresh token MUST NOT be present in the JSON response body.",
         "requestBody": {
@@ -2486,10 +3259,20 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": ["email","code"],
+                "required": [
+                  "email",
+                  "code"
+                ],
                 "properties": {
-                  "email": { "type": "string", "format": "email", "example": "jane@example.com" },
-                  "code": { "type": "string", "example": "123456" }
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "jane@example.com"
+                  },
+                  "code": {
+                    "type": "string",
+                    "example": "123456"
+                  }
                 }
               }
             }
@@ -2501,13 +3284,25 @@
             "headers": {
               "Set-Cookie": {
                 "description": "HttpOnly refreshToken cookie is set on successful verification",
-                "schema": { "type": "string" }
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/VerifyEmailResponse" },
-                "example": { "success": true, "user": { "id": "66c2d3a4e0b0c1a2b3c4d5e6", "username": "jane_doe", "email": "jane@example.com" }, "accessToken": "eyJ..." }
+                "schema": {
+                  "$ref": "#/components/schemas/VerifyEmailResponse"
+                },
+                "example": {
+                  "success": true,
+                  "user": {
+                    "id": "66c2d3a4e0b0c1a2b3c4d5e6",
+                    "username": "jane_doe",
+                    "email": "jane@example.com"
+                  },
+                  "accessToken": "eyJ..."
+                }
               }
             }
           }
@@ -2516,14 +3311,28 @@
     },
     "/api/otp/resend-verification": {
       "post": {
-        "tags": ["Auth"],
+        "tags": [
+          "Auth"
+        ],
         "summary": "Resend verification email",
         "description": "Sends a new verification OTP to the given email. Previous OTPs are invalidated.",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "type": "object", "required":["email"], "properties": { "email": { "type":"string", "format":"email", "example":"jane@example.com" } } }
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "example": "jane@example.com"
+                  }
+                }
+              }
             }
           }
         },
@@ -2532,8 +3341,13 @@
             "description": "Verification email sent",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/MessageResponse" },
-                "example": { "success": true, "message": "Verification email sent" }
+                "schema": {
+                  "$ref": "#/components/schemas/MessageResponse"
+                },
+                "example": {
+                  "success": true,
+                  "message": "Verification email sent"
+                }
               }
             }
           }
@@ -2542,7 +3356,9 @@
     },
     "/api/auth/refresh": {
       "post": {
-        "tags": ["Auth"],
+        "tags": [
+          "Auth"
+        ],
         "summary": "Refresh access token using refresh cookie",
         "description": "Exchanges a valid refresh token (sent as HttpOnly cookie) for a new access token. The refresh token is rotated and set as an HttpOnly Set-Cookie header.",
         "responses": {
@@ -2551,7 +3367,9 @@
             "headers": {
               "Set-Cookie": {
                 "description": "HttpOnly refreshToken cookie is set on successful refresh",
-                "schema": { "type": "string" }
+                "schema": {
+                  "type": "string"
+                }
               }
             },
             "content": {
@@ -2559,12 +3377,25 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "accessToken": { "type": "string" },
-                    "token": { "type": "string" },
-                    "user": { "$ref": "#/components/schemas/PublicAuthUser" }
+                    "accessToken": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "string"
+                    },
+                    "user": {
+                      "$ref": "#/components/schemas/PublicAuthUser"
+                    }
                   }
                 },
-                "example": { "accessToken": "eyJ...", "token": "eyJ...", "user": { "id": "66c2...", "username": "jane_doe" } }
+                "example": {
+                  "accessToken": "eyJ...",
+                  "token": "eyJ...",
+                  "user": {
+                    "id": "66c2...",
+                    "username": "jane_doe"
+                  }
+                }
               }
             }
           }
@@ -4926,7 +5757,8 @@
                     "deviceInfo": "Chrome on Windows",
                     "ipAddress": "127.0.0.1",
                     "createdAt": "2026-06-11T00:00:00.000Z",
-                    "expiresAt": "2026-07-11T00:00:00.000Z"
+                    "updatedAt": "2026-06-11T00:00:00.000Z",
+                    "lastSeenAt": "2026-06-11T00:00:00.000Z"
                   }
                 ],
                 "examples": {
@@ -4938,7 +5770,8 @@
                         "deviceInfo": "Chrome on Windows",
                         "ipAddress": "127.0.0.1",
                         "createdAt": "2026-06-11T00:00:00.000Z",
-                        "expiresAt": "2026-07-11T00:00:00.000Z"
+                        "updatedAt": "2026-06-11T00:00:00.000Z",
+                        "lastSeenAt": "2026-06-11T00:00:00.000Z"
                       }
                     ]
                   }
@@ -5010,15 +5843,9 @@
                 "schema": {
                   "$ref": "#/components/schemas/MessageResponse"
                 },
-                "example": [
-                  {
-                    "id": "66c2d3a4e0b0c1a2b3c4d5ec",
-                    "deviceInfo": "Chrome on Windows",
-                    "ipAddress": "127.0.0.1",
-                    "createdAt": "2026-06-11T00:00:00.000Z",
-                    "expiresAt": "2026-07-11T00:00:00.000Z"
-                  }
-                ],
+                "example": {
+                  "message": "All other sessions revoked successfully"
+                },
                 "examples": {
                   "default": {
                     "summary": "Success response example",
